@@ -44,7 +44,7 @@
                     <!--Column-->
                     <div class="column col-md-6 col-sm-6 col-xs-12">
                         <div class="image">
-                            <img src="{{asset('frontend')}}/images/about-1.jpg" alt="" />
+                            <img src="{{asset('frontend')}}/images/fabrication-man.png" alt="" />
                         </div>
                     </div>
                     <!--Column-->
