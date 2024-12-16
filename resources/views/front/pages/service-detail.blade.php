@@ -40,6 +40,7 @@
 						<div class="inner-box">
 							
                             <h2>{{$service->name}}</h2>
+                            <img src="{{asset('web/media/lg')}}/{{$service->image}}"  />
                             <div class="text">
                                 <p>{!! html_entity_decode($service->description) !!} </p>
                             </div>
@@ -64,7 +65,7 @@
 						<!--Contact Widhet-->
                     	<div class="sidebar-widget contact-info-widget">
                         	<div class="sidebar-title style-two">
-                                <h2>Our Brochures</h2>
+                                <h2>Contact Detail</h2>
                             </div>
                         	<div class="inner-box">
                             	<ul>
