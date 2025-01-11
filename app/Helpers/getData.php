@@ -27,7 +27,7 @@ function getWebsiteData(){
 
 function getServiceList(){
     $data = [
-        'Farming Service', 'Waste Management', 'Drip Irrigation', 'Solar System', 'Other'
+        'CNC Turning Job Work', 'Milling Machine Job Work', 'Precision Machining Work', 'VMC Machine Job Works', 'Lathe Machine Job Work', 'Broaching Machine', 'Other'
     ];
 
     if ($data) {
@@ -130,6 +130,11 @@ function getLatestBlogs($limit = 4){
     return null;
 }
 
+function getSpecificBlogs($limit = 4, $skip = 0){
+    $blogs = Blog::orderBy('id', 'desc')->skip($skip)->take($limit)->get();
+    return $blogs;
+}
+
 
 
 function getVegetable(){
@@ -166,6 +171,7 @@ function getProductImage($id){
     $data = ProductImage::where('product_id', $id)->first(); 
     return $data;
 }
+
 
 function getCities(){
     $cities = [

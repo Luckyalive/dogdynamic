@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('city')->nullable();
             $table->string('address')->nullable();
+            $table->string('document')->nullable();
             $table->text('message')->nullable();
             $table->text('page_url')->nullable();
             $table->text('service')->nullable();

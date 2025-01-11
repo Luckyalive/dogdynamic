@@ -257,6 +257,7 @@ $(document).on('click', '#product-inquiry-block', function() {
   var email = $(this).data('email');
   var address = $(this).data('address');
   var service = $(this).data('service');
+  var document = $(this).data('document');
   var individualService = $(this).data('individual-service');
 
 
@@ -269,6 +270,9 @@ $(document).on('click', '#product-inquiry-block', function() {
   $('#address').text(`${address}`);
   $('#service').text(`${service}`);
   $('#pageUrl').text(`${pageUrl}`);
+  if (document) {
+    $('#document').html(`<a href="${document}" target="_blank">View Document</a>`);
+  }
   $('#message').text(`${message}`);
   
   // If Individual Service is defined or not

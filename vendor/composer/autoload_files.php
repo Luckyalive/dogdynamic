@@ -40,6 +40,7 @@ return array(
     '3104a7ef77735f618bc341a4f6860e8e' => $baseDir . '/app/Helpers/imageHelpers.php',
     'a4121f3b013a563c1db8f2304699059f' => $baseDir . '/app/Helpers/categoryHelpers.php',
     '1470afb82d70e3bec4287d9e79eea133' => $baseDir . '/app/Helpers/getData.php',
+    '510a3abb3ba01c154931ca72bcf92dc4' => $baseDir . '/app/Helpers/getDataList.php',
     'f69f35104cae8f30094f390c227d06fd' => $baseDir . '/app/Helpers/dateFormats.php',
     'b4e3f29b106af37a2bb239f73cdf68c7' => $baseDir . '/app/helpers.php',
 );

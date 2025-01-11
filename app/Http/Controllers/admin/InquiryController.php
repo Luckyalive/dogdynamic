@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use App\Models\admin\ProductInquiry;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\ContactInquiryMail;
 use App\Mail\UserContactInquiryMail;
+use Str;
 
 class InquiryController extends Controller
 {
@@ -91,6 +93,8 @@ class InquiryController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $request->validate([
             'name' => 'required|string',
             'phone' => 'required|string',
@@ -118,13 +122,35 @@ class InquiryController extends Controller
 
     public function storeContactForm(Request $request)
     { 
+        // dd($request->file('document'));
+
         // dd($request->all());
-        
+
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
+            'document' => 'file|mimes:doc,docx,pdf,xls,xlsx,csv,txt,jpeg,jpg,png,gif,webp|max:20480', // Max size 20MB
         ]);
-        	
+    
+        $filename = Str::slug($request->name);
+        if ($request->hasFile('document') && $request->file('document')->isValid()) {
+
+            $file = $request->file('document');
+
+            
+            $extension = $request->file('document')->getClientOriginalExtension();
+            $newFileName = $filename.'-'. time() . '.' . $extension;
+
+            $file->move(public_path('uploads/contact/'), $newFileName);
+
+            $filePath = 'uploads/contact/' . $newFileName;
+
+        }else{
+            $newFileName = null;
+        }
+        
+        
+        
         
         if($request->individualService){
             $individualService = implode(", ", $request->individualService);
@@ -132,8 +158,6 @@ class InquiryController extends Controller
         else{
             $individualService = null;
         }
-            // dd($string);
-   
         
         $customer = Inquiry::create([
             'name' => $request->name, 
@@ -141,19 +165,36 @@ class InquiryController extends Controller
             'email' => $request->email, 
             'address' => $request->address,
             'service' => $request->service, 
+            'document' => $newFileName, 
             'individualService' => $individualService, 
             'page_url' => $request->page_url, 
             'message' => $request->message,
         ]);
-        
-        
-        // $isMailSent = Mail::to(env('MAIL_To'))->send(new ContactInquiryMail($customer));
-        $isMailSent = Mail::to(env('MAIL_To'))->send(new ContactInquiryMail($customer));
-        $isMailSent = Mail::to($request->email)->send(new UserContactInquiryMail($customer));
-       
-        return redirect()->route('thankYou')->with('success', 'Thank you..');
+            // dd($customer);
 
+        
+        
+// Send emails using the $customer variable
+try {
+    Mail::to(env('MAIL_To'))->send(new ContactInquiryMail($customer));
+    Mail::to($request->email)->send(new UserContactInquiryMail($customer));
+    $isMailSent = true;
+    
+    return redirect()->route('thankYou')->with('success', 'Thank you..');
+} catch (\Exception $e) {
+    // Handle mail errors
+    $isMailSent = false;
+    // Log or handle the exception as needed
+    Log::error('Mail sending failed: ' . $e->getMessage());
+    
+    return redirect()->back()->with('error', 'Something went wrong.');
+    // return response()->json(['success' => $e->getMessage()]);
+}
+
+// Optionally return a response
+return response()->json(['success' => $isMailSent]);
     }
+
 
     /**
      * Display the specified resource.

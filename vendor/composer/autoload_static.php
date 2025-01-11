@@ -41,6 +41,7 @@ class ComposerStaticInit8b46142bedc1689261c6f15a26b914a7
         '3104a7ef77735f618bc341a4f6860e8e' => __DIR__ . '/../..' . '/app/Helpers/imageHelpers.php',
         'a4121f3b013a563c1db8f2304699059f' => __DIR__ . '/../..' . '/app/Helpers/categoryHelpers.php',
         '1470afb82d70e3bec4287d9e79eea133' => __DIR__ . '/../..' . '/app/Helpers/getData.php',
+        '510a3abb3ba01c154931ca72bcf92dc4' => __DIR__ . '/../..' . '/app/Helpers/getDataList.php',
         'f69f35104cae8f30094f390c227d06fd' => __DIR__ . '/../..' . '/app/Helpers/dateFormats.php',
         'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );

@@ -33,7 +33,8 @@
         "files": [
             "app/Helpers/imageHelpers.php",    
             "app/Helpers/categoryHelpers.php",    
-            "app/Helpers/getData.php",    
+            "app/Helpers/getData.php",      
+            "app/Helpers/getDataList.php",    
             "app/Helpers/dateFormats.php",    
             "app/helpers.php"
         ]
