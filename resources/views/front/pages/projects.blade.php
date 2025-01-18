@@ -13,7 +13,7 @@
 
 @section('content')
 
-    <section class="page-title" style="background-image:url(http://localhost:8000/web/media/sm/1733921201_504.webp);">
+    <section class="page-title" style="background-image:url({{asset('web/media/lg')}}/1733921201_504.webp);">
         <div class="auto-container">
             <h1>Projects</h1>
         </div>
@@ -41,24 +41,25 @@
             <div class="col-md-4 images">
                     <div class="slide-4 no-arrow">
                                 <div class="thumb1">
-                                        <img src="http://localhost:8000/web/media/lg/1733260775_163.webp"
+                                        <img src="{{asset('web/media/lg')}}/1733921212_717.webp"
                                             class="img-fluid bg-img" alt="">
                                 </div>
                                 <div class="thumb1">
-                                        <img src="http://localhost:8000/web/media/sm/1733921212_717.webp"
+                                        <img src="{{asset('web/media/lg')}}/1733921244_735.webp"
                                             class="img-fluid bg-img" alt="">
                                 </div>
                                 <div class="thumb1">
-                                        <img src="http://localhost:8000/web/media/sm/1733921244_735.webp"
-                                            class="img-fluid bg-img" alt="">
-                                </div>
-                                <div class="thumb1">
-                                        <img src="http://localhost:8000/web/media/sm/1733921159_580.webp"
+                                        <img src="{{asset('web/media/lg')}}/1733921159_580.webp"
                                             class="img-fluid bg-img" alt="">
                                 </div>
                                 
                                 <div class="thumb1">
-                                        <img src="http://localhost:8000/web/media/sm/1733921276_420.webp"
+                                        <img src="{{asset('web/media/lg')}}/1733921276_420.webp"
+                                            class="img-fluid bg-img" alt="">
+                                </div>
+                                
+                                <div class="thumb1">
+                                        <img src="{{asset('web/media/lg')}}/1736590103_204.webp"
                                             class="img-fluid bg-img" alt="">
                                 </div>
                     </div>

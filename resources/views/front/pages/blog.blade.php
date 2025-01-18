@@ -44,7 +44,7 @@
                 
             @foreach($blogs as $blog)
                 <!--News Block Three-->
-                <div class="news-block-three col-md-4 col-sm-12 col-xs-12">
+                <div class="news-block col-md-4 col-sm-12 col-xs-12">
                     <div class="inner-box">
                         <div class="image">
                             <a href="{{route('blog')}}/{{$blog->slug}}"><img src="{{asset('web/media/lg')}}/{{$blog->image}}" alt="" /></a>

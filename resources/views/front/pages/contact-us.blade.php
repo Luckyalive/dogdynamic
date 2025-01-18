@@ -47,8 +47,8 @@
     <section class="contact-section">
     	<div class="auto-container">
         	<div class="contact-title">
-            	<h2>Drop us message</h2>
-                <div class="text">Praising pain was born and I will give you a complete account of the system, and </div>
+            	<h2>Get in Touch with Us</h2>
+                <div class="text">Have questions or need assistance? We’re here to help! Fill out the form below to reach out to our team, and we’ll get back to you as soon as possible.</div>
             </div>
         	<div class="row clearfix">
             	
@@ -132,13 +132,28 @@
                             @endif
                             
                             @if(getWebsiteData()['primary_mail'])
-                            <li><span>email:</span>{{getWebsiteData()['primary_mail']}}</li>
+                                <li>
+                                    <span>Email:</span> 
+                                    <a href="mailto:{{ getWebsiteData()['primary_mail'] }}">{{ getWebsiteData()['primary_mail'] }}</a>
+                                    @if(getWebsiteData()['secondary_mail'])
+                                        <br>
+                                        <a href="mailto:{{ getWebsiteData()['secondary_mail'] }}">{{ getWebsiteData()['secondary_mail'] }}</a>
+                                    @endif
+                                </li>
                             @endif
 
                             @if(getWebsiteData()['primary_phone'])
-                            <li><span>phone:</span>@if(getWebsiteData()['secondary_phone'])(+91) {{getWebsiteData()['secondary_phone']}}
-                            <br>@endif (+91) {{getWebsiteData()['primary_phone']}}</li>
+                                <li>
+                                    <span>Phone:</span> 
+                                    <a href="tel:+91{{ getWebsiteData()['primary_phone'] }}">(+91) {{ getWebsiteData()['primary_phone'] }}</a>
+                                    @if(getWebsiteData()['secondary_phone'])
+                                        <br>
+                                        <a href="tel:+91{{ getWebsiteData()['secondary_phone'] }}">(+91) {{ getWebsiteData()['secondary_phone'] }}</a>
+                                    @endif
+                                </li>
                             @endif
+
+
 
                         </ul>
                     </div>

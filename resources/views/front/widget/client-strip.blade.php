@@ -1,7 +1,7 @@
 
 
 <!--Clients Section-->
-<section class="clients-section">
+<section class="clients-section" style="background:white">
     <div class="auto-container">
 
     <div class="sec-title">

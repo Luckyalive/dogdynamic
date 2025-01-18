@@ -1,5 +1,5 @@
 
-<section class="news-section">
+<section class="clients-section">
     <div class="auto-container">
 
         <div class="sec-title">
@@ -9,15 +9,13 @@
 
         <div class="row clearfix">
 
-            <!--Column-->
             <div class="column col-md-8 col-sm-12 col-xs-12">
                 <div class="row clearfix">
-
                 
-                @foreach(getLatestBlogs(4) as $blog)
+                @foreach(getLatestBlogs(2) as $blog)
                     <div class="news-block col-md-6 col-sm-6 col-xs-12">
                         <div class="inner-box">
-                            <div class="image">
+                            <div class="image thumb-block">
                                 <a href="{{route('blog')}}/{{$blog->slug}}"><img src="{{asset('web/media/lg')}}/{{$blog->image}}"
                                         alt="" /></a>
                             </div>
@@ -39,34 +37,19 @@
                 <div class="sidebar-news">
 
                     <!--News Block Two-->
-                    <div class="news-block-two">
-                        <div class="inner-box">
-                            <h3><a href="blog-detail.html">Override the digital divide with additional clickthroughs
-                                    from ...</a></h3>
-                            <div class="post-info">18 Jan 2019</div>
+                    @foreach(getSpecificBlogs(4 , 2) as $specificBlog)
+                        <div class="news-block-two">
+                            <div class="inner-box">
+                                <h3><a href="{{route('blog')}}/{{$blog->slug}}">{{$specificBlog->title}}</a></h3>
+                                <div class="post-info">{{dateFormat($blog->created_at, 'd M Y')}}</div>
+                            </div> 
                         </div>
-                    </div>
+                    @endforeach 
 
-                    <!--News Block Two-->
-                    <div class="news-block-two">
-                        <div class="inner-box">
-                            <h3><a href="blog-detail.html">Dynamically procrastinate B2C users after installed
-                                    benefits...</a></h3>
-                            <div class="post-info">18 Jan 2019</div>
-                        </div>
-                    </div>
-
-                    <!--News Block Two-->
-                    <div class="news-block-two">
-                        <div class="inner-box">
-                            <h3><a href="blog-detail.html">Capitalize on low hanging fruit to identify a ballpark value
-                                    added ...</a></h3>
-                            <div class="post-info">18 Jan 2019</div>
-                        </div>
-                    </div>
-
-                    <a href="blog.html" class="read-more">Read More</a>
-
+                    @if(count(getSpecificBlogs(4 , 2)) > 0)
+                        <a href="{{route('blog')}}" class="read-more">Read More</a>
+                    @endif
+                      
                 </div>
             </div>
 

@@ -40,7 +40,7 @@
 						<div class="inner-box">
 							
                             <h2>{{$service->name}}</h2>
-                            <img src="{{asset('web/media/lg')}}/{{$service->image}}"  />
+                            <img style="max-height: 500px" src="{{asset('web/media/lg')}}/{{$service->image}}"  />
                             <div class="text">
                                 <p>{!! html_entity_decode($service->description) !!} </p>
                             </div>

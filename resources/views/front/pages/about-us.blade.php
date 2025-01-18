@@ -61,19 +61,19 @@
                             <div class="title">Jitendrasinh Parmar (Director)</div>
                             <div class="text">
                                 He is Director of DEC Engineering Pvt. Ltd. He is Mechanical Engineer having 30+ years
-                                of vast experience in various types of projects constructions and running company in
-                                india and abrode.
+                                of vast experience in various types of construction of projects and operating companies in
+                                india and abroad.
                             </div>
                             <hr>
 
                             <div class="title">Srinivasan Krishnan (Director)</div>
                             <div class="text"> He is Director of DEC Engineering Pvt. Ltd. He is Mechanical Engineer
-                                having 29+ years of vast experience in running DEC Engineering Pvt. Ltd.</div>
+                                having 29+ years of vast experience in operating DEC Engineering Pvt Ltd.</div>
                             <hr>
 
                             <div class="title">Shivaji Karande (Director)</div>
                             <div class="text"> He is Director of DEC Engineering Pvt. Ltd. He is having 40+ years of
-                                vast experience in running Commercial and Legal metteres.</div>
+                                vast experience in executing Commercial and Legal metteres.</div>
                             <hr>
                         </div>
 
@@ -100,9 +100,9 @@
                 </div>
                 <div class="text">
                     <p>We're committed to providing you with a seamless engineering and construction experience. Trust
-                        us to keep your belongings safe, secure, and easily accessible whenever you need them.</p>
-                    <p>We prioritize understanding your unique needs, ensuring every solution aligns with your goals.
-                        Collaboration and clear communication drive our success.</p>
+                        us to support for any project implementation with easy accessiblity whenever you need them.</p>
+                    <p>We prioritize understanding your unique needs ensuring every solution to align with once goals.
+                        Collaborating with clear communication to drive everyone's success.</p>
                     <p>We embrace creativity and the latest technologies to deliver results that stand out. Our approach
                         is agile, adaptive, and tailored to achieve excellence.</p>
                 </div>
@@ -130,9 +130,9 @@
             <div class="auto-container">
 
                 <div class="sponsors-outer">
-                    <ul class="sponsors-carousel owl-carousel owl-theme">
+                    <ul class="certificate-carousel owl-carousel owl-theme">
                         @foreach($certificates as $client)
-                        <li class="slide-item">
+                        <li class="slide-item certificate-block">
                             <figure class="image-box">
                                 <a data-fancybox="gallery" data-src="{{asset('web')}}/media/md/{{$client->image}}">
                                     <img src="{{asset('web')}}/media/md/{{$client->image}}" />

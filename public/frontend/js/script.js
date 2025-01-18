@@ -196,7 +196,7 @@
 					items:4
 				},
 				800:{
-					items:5
+					items:6
 				},
 				1024:{
 					items:6
@@ -205,6 +205,33 @@
 		});    		
 	}
 	
+	if ($('.certificate-carousel').length) {
+		$('.certificate-carousel').owlCarousel({
+			loop:true,
+			margin:0,
+			nav:true,
+			smartSpeed: 500,
+			autoplay: 4000,
+			navText: [ '<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>' ],
+			responsive:{
+				0:{
+					items:1
+				},
+				480:{
+					items:2
+				},
+				600:{
+					items:4
+				},
+				800:{
+					items:4
+				},
+				1024:{
+					items:4
+				}
+			}
+		});    		
+	}
 	
 	//LightBox / Fancybox
 	if($('.lightbox-image').length) {

@@ -1,4 +1,4 @@
-<section class="we-do-section grey-bg">
+<section class="we-do-section grey-bg" style="background:url({{asset('frontend')}}/images/dotted-background.png)">
     <div class="auto-container">
         <!--Sec Title-->
         <div class="sec-title">
@@ -9,7 +9,7 @@
         
         <div class="row clearfix">
             @foreach(getIndustries() as $industry)
-                <div class="services-block col-md-4 col-sm-6 col-xs-12">
+                <div class="services-block thumb-block col-md-4 col-sm-6 col-xs-12">
                     <div class="inner-box">
                         <div class="image">
                       

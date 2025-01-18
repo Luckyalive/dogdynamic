@@ -108,5 +108,7 @@
             </div>
             
         </div>
+
+@include('front.widget.inquiry-popup')
         
     </footer>

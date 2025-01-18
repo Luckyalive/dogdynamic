@@ -61,19 +61,19 @@
                             <div class="title">Jitendrasinh Parmar (Director)</div>
                             <div class="text">
                                 He is Director of DEC Engineering Pvt. Ltd. He is Mechanical Engineer having 30+ years
-                                of vast experience in various types of projects constructions and running company in
-                                india and abrode.
+                                of vast experience in various types of construction of projects and operating companies in
+                                india and abroad.
                             </div>
                             <hr>
 
                             <div class="title">Srinivasan Krishnan (Director)</div>
                             <div class="text"> He is Director of DEC Engineering Pvt. Ltd. He is Mechanical Engineer
-                                having 29+ years of vast experience in running DEC Engineering Pvt. Ltd.</div>
+                                having 29+ years of vast experience in operating DEC Engineering Pvt Ltd.</div>
                             <hr>
 
                             <div class="title">Shivaji Karande (Director)</div>
                             <div class="text"> He is Director of DEC Engineering Pvt. Ltd. He is having 40+ years of
-                                vast experience in running Commercial and Legal metteres.</div>
+                                vast experience in executing Commercial and Legal metteres.</div>
                             <hr>
                         </div>
 
@@ -100,7 +100,7 @@
                 </div>
                 <div class="text">
                     <p>We're committed to providing you with a seamless engineering and construction experience. Trust
-                        us to keep your belongings safe, secure, and easily accessible whenever you need them.</p>
+                        us to support for any project implementation with easy accessiblity whenever you need them.</p>
                     <p>We prioritize understanding your unique needs, ensuring every solution aligns with your goals.
                         Collaboration and clear communication drive our success.</p>
                     <p>We embrace creativity and the latest technologies to deliver results that stand out. Our approach

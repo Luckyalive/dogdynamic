@@ -60,12 +60,16 @@
     </div>
 </section>
 
-@include('front.widget.what-we-do')
+
 
 @include('front.widget.our-projects')
 
+@include('front.widget.what-we-do')
+
 @include('front.widget.client-strip')
+
 @include('front.widget.latest-blog')
+
 
 
 

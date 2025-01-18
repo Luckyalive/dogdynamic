@@ -26,8 +26,15 @@ function getWebsiteData(){
 }
 
 function getServiceList(){
-    $data = [
-        'CNC Turning Job Work', 'Milling Machine Job Work', 'Precision Machining Work', 'VMC Machine Job Works', 'Lathe Machine Job Work', 'Broaching Machine', 'Other'
+    $data = ['Design & Engineering',
+                'Supply & Fabrication Of Equipments At Workshop',
+                'Equipment Erection',
+                'Fabrication & Installation of Tanks and Vessels at Site',
+                'Fabrication & Erection Of Piping',
+                'Testing & Commissioning',
+                'Retrofitting, Modification & Shutdown Work',
+                'Mechanical Maintenance Of work',
+                'Fabrication & Erection Of Structure', 'Other'
     ];
 
     if ($data) {
@@ -123,7 +130,7 @@ function getTeams(){
     return null;
 }
 function getLatestBlogs($limit = 4){
-    $blogs = Blog::where('status', '1')->limit($limit)->get();
+    $blogs = Blog::where('status', '1')->orderBy('id', 'desc')->limit($limit)->get();
     if ($blogs) {
         return $blogs;
     }
