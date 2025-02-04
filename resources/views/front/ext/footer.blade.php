@@ -29,7 +29,7 @@
                                     <li><a href="{{route('index')}}">Home</a></li>
                                     <li><a href="{{route('about')}}">About Us</a></li>
                                     <li><a href="{{route('services')}}">Services</a></li>
-                                    <li><a href="{{route('services')}}">Gallery</a></li>
+                                    <li><a href="{{route('projects')}}">Project Executed</a></li>
                                     <li><a href="{{route('blog')}}">Blog</a></li>
                                     <li><a href="{{route('contact')}}">contact Us</a></li>
                                         </ul>
