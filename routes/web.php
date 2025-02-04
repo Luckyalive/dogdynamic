@@ -121,6 +121,9 @@ Route::get('/product/inquiry', [PageController::class, 'productInquiry'])->name(
 
 Route::get('/thank-you', [PageController::class, 'thankYou'])->name('thankYou');
 Route::get('/test-mail', [PageController::class, 'testMail'])->name('testMail');
+Route::get('/test-rss', [PageController::class, 'testRss'])->name('testRss');
+
+
 
 
 

@@ -99,7 +99,7 @@
                 <div class="clearfix">
                     <div class="pull-left">
 
-                        <div class="copyright">&copy; Copyright 2024 © DEC Engineering pvt.ltd, All rights reserved.</div>
+                        <div class="copyright">&copy; Copyright 2025 © DEC Engineering pvt.ltd, All rights reserved.</div>
                     </div>
                     <div class="pull-right">
                         <div class="created"><p class=" mb-0">Design & Developed by <a target="_blank" href="https://www.alivecreate.com">Alivecreate Web Solutions</a><i class="fa fa-heart"></i></p></div>

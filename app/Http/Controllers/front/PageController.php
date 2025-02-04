@@ -21,6 +21,8 @@ use App\Models\admin\ProductQuantity;
 use App\Mail\ProductInquiryMail;
 use App\Mail\UserInquiryMail;
 
+use Illuminate\Support\Facades\Http;
+use SimpleXMLElement;
 
 
 class PageController extends Controller
@@ -256,4 +258,31 @@ class PageController extends Controller
         return view('mail.welcome');
     }
     
+    
+    public function testRss(){
+        
+        $rssFeedUrl = 'https://gujarati.gnsnews.co.in/?call_custom_simple_rss=1&csrp_cat=27';
+        $rssFeedContent = Http::get($rssFeedUrl)->body();
+
+        // Parse the RSS feed
+        $rssData = [];
+        $xml = new SimpleXMLElement($rssFeedContent);
+
+        // Loop through each item
+        foreach ($xml->channel->item as $item) {
+            $rssData[] = [
+                'title' => (string) $item->title,
+                'link' => (string) $item->link,
+                'pubDate' => (string) $item->pubDate,
+                'description' => (string) $item->description,
+                'contentEncoded' => (string) $item->{'content:encoded'},
+                'image' => isset($item->enclosure) 
+                            ? (string) $item->enclosure['url'] 
+                            : (isset($item->{'media:content'}) ? (string) $item->{'media:content'}['url'] : null),
+            ];
+        }
+
+
+        return view('front.pages.test-rss', compact('rssData'));
+    }
 }
