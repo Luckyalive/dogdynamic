@@ -951,7 +951,6 @@ img{
 .main-menu .navigation {
     position: relative;
     margin: 0px;
-    display: flex;
     align-items: center;
     align-content: center;
 }
