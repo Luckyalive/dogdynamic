@@ -953,6 +953,7 @@ img{
     margin: 0px;
     align-items: center;
     align-content: center;
+	display: flex;
 }
 .main-menu .navigation > li{
 	position:relative;

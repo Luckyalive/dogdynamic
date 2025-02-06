@@ -469,6 +469,7 @@
 		width:100% !important;
 		background:#262626;
 		border:1px solid #ffffff;
+		display: block;
 	}
 	
 	.main-menu .navbar-collapse > .navigation > li{
