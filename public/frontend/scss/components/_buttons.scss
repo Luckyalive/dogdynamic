@@ -1,0 +1,111 @@
+@use '../utils' as *;
+
+.it-btn {
+    &-green {
+        font-size: 16px;
+        padding: 18px 40px;
+        display: inline-block;
+        color: var(--it-common-white);
+        background: var(--it-theme-1);
+        border-radius: 5px;
+        transition: .3s;
+        font-weight: 700;
+        text-transform: capitalize;
+        @media #{$xl} {
+            padding: 18px 30px;
+        }
+
+        @media #{$sm} {
+            padding: 18px 40px;
+        }
+        @media #{$xs} {
+            padding: 18px 35px;
+        }
+
+        &:hover {
+            color: var(--it-common-white);
+            background-color: var(--it-common-black);
+        }
+
+        &.sm {
+            padding: 12px 30px;
+            font-size: 15px;
+
+            &:hover {
+                background-color: var(--it-theme-2);
+                color: var(--it-common-black);
+            }
+        }
+
+        &.white-btn {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--it-theme-1);
+            background-color: var(--it-common-white);
+
+            &:hover {
+                background-color: var(--it-theme-2);
+                color: var(--it-common-black);
+            }
+        }
+
+        &.white-bg {
+            &:hover {
+                background-color: var(--it-common-white);
+                color: var(--it-common-black);
+            }
+        }
+
+        &.yellow-bg {
+            color: var(--it-common-black);
+            background: var(--it-theme-2);
+
+            &:hover {
+                color: var(--it-common-white);
+                background-color: var(--it-theme-1);
+            }
+
+            &.white-bg {
+                &:hover {
+                    background-color: var(--it-common-white);
+                    color: var(--it-common-black);
+                }
+            }
+        }
+
+        &-3 {
+            text-transform: uppercase;
+            color: var(--it-theme-1);
+            background: var(--it-common-white);
+        }
+    }
+
+    &-white {
+        font-size: 16px;
+        padding: 18px 40px;
+        display: inline-block;
+        color: var(--it-common-black);
+        background: var(--it-common-white);
+        border-radius: 5px;
+        transition: .3s;
+        font-weight: 700;
+        text-transform: capitalize;
+
+        @media #{$xl,$md} {
+            padding: 18px 30px;
+        }
+
+        &:hover {
+            color: var(--it-common-white);
+            background-color: var(--it-common-black);
+        }
+
+        &.yellow-bg {
+            &:hover {
+                background-color: var(--it-theme-2);
+                color: var(--it-common-black);
+            }
+        }
+    }
+
+}

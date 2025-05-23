@@ -95,9 +95,16 @@ Route::prefix('/' . $adminName)->group(function () {
 Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/about-us', [PageController::class, 'about'])->name('about');
 Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
-Route::get('/our-products', [PageController::class, 'products'])->name('products');
+Route::get('/products', [PageController::class, 'products'])->name('products');
 Route::get('/service', [PageController::class, 'services'])->name('services');
 Route::get('/project', [PageController::class, 'projects'])->name('projects');
+
+
+
+
+Route::get('/product/{slug}', [PageController::class, 'productDetails'])->name('productDetails');
+
+
 
 Route::get('/service/{slug}', [PageController::class, 'serviceDetail'])->name('serviceDetail');
 

@@ -1,0 +1,155 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  26. Working area start
+/*----------------------------------------*/
+
+.it-work {
+    &-title{
+        &-box{
+            & .it-section-title{
+                @media #{$xs} {
+                    font-size: 29px;
+                }
+            }
+        }
+    }
+
+    &-wrapper {
+        &::before {
+            position: absolute;
+            width: 100%;
+            top: 32px;
+            content: "";
+            border: 1px dashed var(--it-common-black);
+            z-index: -1;
+
+            @media #{$md,$xs} {
+                display: none;
+            }
+
+            
+        }
+        &.work-border-2{
+            &::before{
+                z-index: 2;
+            }  
+        }
+    }
+
+    &-item {
+        transition: .3s;
+
+        &:hover {
+            & .it-work-main-number {
+                color: var(--it-common-white);
+                border: 1px solid transparent;
+                background-color: var(--it-theme-1);
+            }
+
+            & .it-work-sub-icon{
+                & span{
+                    color: var(--it-theme-2);
+                }
+            }
+
+            & .it-work-content {
+                background-color: var(--it-theme-1);
+
+                & p {
+                    color: var(--it-common-white);
+                }
+            }
+
+            & .it-section-title-sm {
+                color: var(--it-common-white);
+            }
+        }
+    }
+
+    &-main {
+        &-number {
+            width: 60px;
+            height: 60px;
+            font-size: 18px;
+            line-height: 60px;
+            border-radius: 50%;
+            display: inline-block;
+            color: var(--it-theme-1);
+            font-family: var(--it-ff-heading);
+            border: 1px solid var(--it-theme-1);
+            background-color: var(--it-common-white);
+            transition: .3s;
+
+            &.work-number-2 {
+                font-size: 24px;
+                font-weight: 700;
+                width: 150px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    &-sub {
+        &-icon {
+            & span {
+                color: var(--it-theme-1);
+                display: inline-block;
+                margin: 9px 0;
+                transition: .3s;
+            }
+        }
+    }
+
+    &-content {
+        padding: 50px 40px 30px 40px;
+        border-radius: 10px;
+        margin-top: 5px;
+        background-color: #F3FAF6;
+        transition: .3s;
+
+        @media #{$xl} {
+            padding: 50px 35px 30px 35px;
+        }
+        @media #{$xs} {
+            padding: 50px 10px 30px 10px;
+        }
+        @media #{$lg,$md,$sm} {
+            padding: 27px 10px;
+        }
+
+        & .it-section-title-sm{
+            @media #{$lg} {
+                font-size: 18px;
+            }
+            @media #{$sm} {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.it-work-2{
+    &-thumb{
+        margin-bottom: 28px;
+        & img{
+            border-radius: 10px;
+        }
+    }
+
+    &-title{
+        font-size: 24px;
+        display: inline-block;
+        margin-bottom: 18px;
+        transition: .3s;
+        @media #{$md}{
+            font-size: 18px;
+        }
+
+        &:hover{
+            color: var(--it-theme-1);
+        }
+    }
+}

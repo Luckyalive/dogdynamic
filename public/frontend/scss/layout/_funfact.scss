@@ -1,0 +1,122 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  11. Funfact area start
+/*----------------------------------------*/
+
+.it-funfact {
+
+    &-wrapp{
+        & .row{
+            [class*="col-"]{
+                &:last-child{
+                    & .it-funfact-content{
+                        border-right: 0;
+                    }
+                }
+            }
+        }
+        &.funfact-wrapp-2{
+            & .it-funfact-content{
+                border: 0;
+                display: inline-block;
+                @media #{$md,$xs}{
+                    display: block;
+                }
+            }
+        }
+    }
+    
+    &-content {
+        border-right: 1px solid var(--it-common-white);
+        @media #{$md}{
+            text-align: center;
+            display: block;
+        }
+        @media #{$xs}{
+            border-right: 0;
+            text-align: center;
+            display: block;
+        }
+    }
+
+    &-number {
+        font-size: 45px;
+        margin-bottom: 15px;
+        font-weight: 700;
+        color: var(--it-common-white);
+        & b{
+            font-weight: 700;
+        }
+
+    }
+
+    &-title {
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--it-common-white);
+
+        &.funfact-green{
+            color: var(--it-theme-1);
+        }
+    }
+
+    &-big-text{
+        position: absolute;
+        font-size: 100px;
+        left: -5%;
+        color: var(--it-common-white);
+        text-align: center;
+        opacity: 0.2;
+        z-index: -1;
+        top: -8px;
+        @media #{$xl}{
+            font-size: 90px;
+        }
+        @media #{$lg}{
+            font-size: 60px;
+        }
+        @media #{$md,$xs}{
+            display: none;
+        }
+    }
+    &-col {
+        &-2 {
+            padding-left: 22px;
+            @media #{$md,$xs}{
+                padding-left: 0;
+            }
+            & .it-funfact-big-text {
+                left: -43%;
+                @media #{$lg}{
+                    left: -20%;
+                }
+            }
+        }
+        &-3 {
+            padding-left: 70px;
+            @media #{$md,$xs}{
+                padding-left: 0;
+            }
+            & .it-funfact-big-text {
+                @media #{$lg}{
+                    left: 10%;
+                }
+            }
+        }
+        &-4 {
+            padding-left: 90px;
+            @media #{$md,$xs}{
+                padding-left: 0;
+            }
+            & .it-funfact-big-text {
+                left: 13%;
+                @media #{$lg}{
+                    left: 35%;
+                }
+            }
+        }
+    }
+
+}

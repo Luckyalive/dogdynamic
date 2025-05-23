@@ -4,23 +4,20 @@ declare(strict_types=1);
 
 namespace Intervention\Image\Drivers\Gd\Modifiers;
 
-use Intervention\Image\Drivers\DriverSpecialized;
 use Intervention\Image\Exceptions\RuntimeException;
 use Intervention\Image\Interfaces\FrameInterface;
 use Intervention\Image\Interfaces\ImageInterface;
-use Intervention\Image\Interfaces\ModifierInterface;
 use Intervention\Image\Interfaces\PointInterface;
+use Intervention\Image\Interfaces\SpecializedInterface;
+use Intervention\Image\Modifiers\PlaceModifier as GenericPlaceModifier;
 
-/**
- * @method mixed getPosition(ImageInterface $image, ImageInterface $watermark)
- * @property mixed $element
- * @property string $position
- * @property int $offset_x
- * @property int $offset_y
- * @property int $opacity
- */
-class PlaceModifier extends DriverSpecialized implements ModifierInterface
+class PlaceModifier extends GenericPlaceModifier implements SpecializedInterface
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @see ModifierInterface::apply()
+     */
     public function apply(ImageInterface $image): ImageInterface
     {
         $watermark = $this->driver()->handleInput($this->element);

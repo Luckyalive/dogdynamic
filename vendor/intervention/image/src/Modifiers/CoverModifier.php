@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Image\Modifiers;
 
+use Intervention\Image\Drivers\SpecializableModifier;
 use Intervention\Image\Exceptions\RuntimeException;
 use Intervention\Image\Geometry\Rectangle;
 use Intervention\Image\Interfaces\ImageInterface;
@@ -11,6 +12,14 @@ use Intervention\Image\Interfaces\SizeInterface;
 
 class CoverModifier extends SpecializableModifier
 {
+    /**
+     * Create new modifier object
+     *
+     * @param int $width
+     * @param int $height
+     * @param string $position
+     * @return void
+     */
     public function __construct(
         public int $width,
         public int $height,
@@ -37,6 +46,6 @@ class CoverModifier extends SpecializableModifier
      */
     public function getResizeSize(SizeInterface $size): SizeInterface
     {
-        return $size->scale($this->width, $this->height);
+        return $size->resize($this->width, $this->height);
     }
 }

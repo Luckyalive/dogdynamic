@@ -1,0 +1,150 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  06. Contact area start
+/*----------------------------------------*/
+.it-contact {
+    &-wrapp {
+        padding: 64px 70px;
+
+        @media #{$xs} {
+            padding: 30px;
+        }
+    }
+
+    &-title-box {
+        border-bottom: 1px solid rgba($color: #5A5A5A, $alpha: .2);
+    }
+
+    &-input {
+        & input {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid rgba($color: #5A5A5A, $alpha: .2);
+        }
+
+        & textarea {
+            padding: 0px 30px;
+            height: 58px;
+            line-height: 58px;
+            resize: none;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid rgba($color: #5A5A5A, $alpha: .2);
+        }
+
+        &.it-shop-input {
+            & textarea {
+                height: 150px;
+            }
+        }
+    }
+
+
+    &-link {
+        &-item {
+            & a {
+                position: relative;
+                display: block;
+                padding-left: 33px;
+                margin-bottom: 5px;
+
+                & i {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    font-size: 20px;
+                    color: var(--it-theme-1);
+                }
+            }
+        }
+    }
+}
+
+.it-contact-3 {
+    &-form {
+        &-box {
+            padding: 109px 77px;
+            padding-right: 410px;
+            border-radius: 10px;
+
+            @media #{$xl} {
+                padding-right: 300px;
+            }
+
+            @media #{$lg} {
+                padding-right: 200px;
+            }
+
+            @media #{$md} {
+                padding-right: 77px;
+            }
+
+            @media #{$xs} {
+                padding: 30px;
+            }
+        }
+    }
+
+    &-input {
+        & input {
+            height: 58px;
+            line-height: 58px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+        }
+
+        & textarea {
+            height: 150px;
+            border-radius: 5px;
+            resize: none;
+            padding: 20px;
+            text-transform: capitalize;
+        }
+    }
+
+    &-thumb {
+        & img {
+            max-width: inherit;
+            border-radius: 10px;
+            margin-left: -360px;
+
+            @media #{$xl} {
+                transform: scale(.7);
+            }
+
+            @media #{$lg} {
+                transform: scale(.7);
+                margin-left: -250px
+            }
+
+            @media #{$md,$xs} {
+                max-width: 100%;
+                border-radius: 10px;
+                margin-left: 0;
+                width: 100%;
+                margin-top: 40px;
+            }
+        }
+
+        &-shape {
+            position: absolute;
+            top: -44px;
+            right: -25px;
+            animation: itswing 1s forwards infinite alternate;
+            transform-origin: bottom center;
+
+            & span {
+                color: var(--it-theme-2);
+            }
+        }
+    }
+}
+
+.it-contact-map-wrapp {
+    & iframe {
+        height: 800px;
+        width: 100%;
+    }
+}

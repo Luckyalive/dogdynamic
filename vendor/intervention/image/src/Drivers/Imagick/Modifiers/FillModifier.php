@@ -7,27 +7,19 @@ namespace Intervention\Image\Drivers\Imagick\Modifiers;
 use Imagick;
 use ImagickDraw;
 use ImagickPixel;
-use Intervention\Image\Drivers\DriverSpecialized;
-use Intervention\Image\Drivers\Imagick\Frame;
 use Intervention\Image\Interfaces\ImageInterface;
-use Intervention\Image\Geometry\Point;
-use Intervention\Image\Interfaces\ModifierInterface;
+use Intervention\Image\Interfaces\SpecializedInterface;
+use Intervention\Image\Modifiers\FillModifier as ModifiersFillModifier;
 
-/**
- * @method bool hasPosition()
- * @property mixed $color
- * @property null|Point $position
- */
-class FillModifier extends DriverSpecialized implements ModifierInterface
+class FillModifier extends ModifiersFillModifier implements SpecializedInterface
 {
     public function apply(ImageInterface $image): ImageInterface
     {
-        $color = $this->driver()->handleInput($this->color);
-        $pixel = $this->driver()
-            ->colorProcessor($image->colorspace())
-            ->colorToNative($color);
+        $pixel = $this->driver()->colorProcessor($image->colorspace())->colorToNative(
+            $this->driver()->handleInput($this->color)
+        );
 
-        foreach ($image as $frame) {
+        foreach ($image->core()->native() as $frame) {
             if ($this->hasPosition()) {
                 $this->floodFillWithColor($frame, $pixel);
             } else {
@@ -38,14 +30,14 @@ class FillModifier extends DriverSpecialized implements ModifierInterface
         return $image;
     }
 
-    private function floodFillWithColor(Frame $frame, ImagickPixel $pixel): void
+    private function floodFillWithColor(Imagick $frame, ImagickPixel $pixel): void
     {
-        $target = $frame->native()->getImagePixelColor(
+        $target = $frame->getImagePixelColor(
             $this->position->x(),
             $this->position->y()
         );
 
-        $frame->native()->floodfillPaintImage(
+        $frame->floodfillPaintImage(
             $pixel,
             100,
             $target,
@@ -56,16 +48,16 @@ class FillModifier extends DriverSpecialized implements ModifierInterface
         );
     }
 
-    private function fillAllWithColor(Frame $frame, ImagickPixel $pixel): void
+    private function fillAllWithColor(Imagick $frame, ImagickPixel $pixel): void
     {
         $draw = new ImagickDraw();
         $draw->setFillColor($pixel);
-        $draw->rectangle(
-            0,
-            0,
-            $frame->native()->getImageWidth(),
-            $frame->native()->getImageHeight()
-        );
-        $frame->native()->drawImage($draw);
+        $draw->rectangle(0, 0, $frame->getImageWidth(), $frame->getImageHeight());
+        $frame->drawImage($draw);
+
+        // deactive alpha channel when image was filled with opaque color
+        if ($pixel->getColorValue(Imagick::COLOR_ALPHA) == 1) {
+            $frame->setImageAlphaChannel(Imagick::ALPHACHANNEL_DEACTIVATE);
+        }
     }
 }

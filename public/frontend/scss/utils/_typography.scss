@@ -1,0 +1,20 @@
+
+// font url
+$font-url: 'https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet';
+
+// font family
+$font-family: (
+    'ff': (
+        'body': "'Dosis', sans-serif",
+        'heading': " 'Exo', sans-serif",
+        'fontawesome': '"Font Awesome 6 Pro"',
+    )
+);
+
+// font size
+$font-size: (
+    'fz': (
+        'body': 14px,
+        'p': 16px,
+    )
+);

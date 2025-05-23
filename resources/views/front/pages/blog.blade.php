@@ -1,77 +1,47 @@
 @extends('front.layout.main-layout')
-@section('page-title')
-@endsection
-
-
-@section('custom-js')
-<script>
-    $(document).ready(function(){
-      $(".blog").addClass( "current");
-    });
-</script>
-@endsection
-
 
 @section('content')
 
-    <section class="page-title" style="background-image:url(frontend/images/blog-header.jpg);">
-        <div class="auto-container">
-            <h1>Blog</h1>
-        </div>
-    </section>
-    <!--End Page Title-->
-    
-    <!--Page Info-->
-    <div class="page-info">
-        <div class="auto-container">
-            <div class="inner-container clearfix">
-                <ul class="bread-crumb pull-left">
-                    <li><a href="{{route('blog')}}">Home</a></li>
-                    <li>Blog</li>
-                </ul>
-                <div class="text pull-right">Certified Company ISO 9001-2008</div>
-            </div>
-        </div>
-    </div>
-    <!--End Page Info-->
-    
-    
-    <!--Blog Page Section-->
-    <div class="blog-page-section">
-    	<div class="auto-container">
-        	<div class="row clearfix">
-            	
-                
-            @foreach($blogs as $blog)
-                <!--News Block Three-->
-                <div class="news-block col-md-4 col-sm-12 col-xs-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <a href="{{route('blog')}}/{{$blog->slug}}"><img src="{{asset('web/media/lg')}}/{{$blog->image}}" alt="" /></a>
-                        </div>
-                        <div class="lower-content">
-                            <div class="lower-box">
-                                <h3><a href="{{route('blog')}}/{{$blog->slug}}">{{$blog->title}}</a></h3>
-                                <a href="{{route('blog')}}/{{$blog->slug}}" class="theme-btn btn-style-four">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                @endforeach
 
+
+
+   <main>
+
+      @include('front.widget.breadcrumb-block')
+
+      <!-- blog area start  -->
+      <div class="it-blog-area pt-115 pb-90">
+         <div class="container">
+            <div class="row">
             
-                
-             
-           </div>
-           
-           
-            <ul class="text-center">
-					{{ $blogs->links('admin.widget.custom-pagination') }}
-            </ul>                
+            @foreach($blogs as $blog)
+               <div class="col-xl-4 col-lg-6 col-md-6 mb-30">
+                     <div class="it-blog-item">
+                        <div class="it-blog-thumb fix">
+                           <img src="{{asset('web/media/sm')}}/{{$blog->image}}" alt="">
+                        </div>
+                        <div class="it-blog-content">
+                         
+                           <h3 class="it-section-title-sm">
+                              <a href="{{route('blogDetail', $blog->slug)}}">{{$blog->title}}</a>
+                           </h3>
+                           <div class="it-blog-button mt-25">
+                              <a href="{{route('blogDetail', $blog->slug)}}" class="it-btn-green sm">Read More</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  
+            @endforeach
+            
+         </div>
+         </div>
+      </div>
+      <!-- blog area End  -->
 
-       </div>
-    </div>
-    
 
-    @endsection
+   </main>
+   
+  
+
+@endsection

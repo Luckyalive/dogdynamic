@@ -1,0 +1,18 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  05. Brand area start
+/*----------------------------------------*/
+
+.it-brand-item {
+    & a {
+        & span {
+            color: var(--it-common-white);
+            transition: .3s;
+
+            &:hover {
+                color: var(--it-theme-2);
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  07. Coverage area start
+/*----------------------------------------*/
+
+.it-coverage {
+    &-shape {
+        &-1 {
+            position: absolute;
+            left: 13%;
+            bottom: 5%;
+            animation: rotate2 15s linear infinite;
+        }
+
+        &-2 {
+            position: absolute;
+            right: 4%;
+            top: 11%;
+            @media #{$xl}{
+                top: 3%;
+            }
+        }
+    }
+    &-title-wrap{
+        @media #{$md,$xs}{
+            margin-bottom: 60px;
+        }
+    }
+}

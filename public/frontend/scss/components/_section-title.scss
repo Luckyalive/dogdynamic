@@ -1,0 +1,87 @@
+@use '../utils' as *;
+
+.it-subtitle {
+    position: relative;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: inline-block;
+    color: var(--it-theme-1);
+    margin-bottom: 15px;
+
+    &::after {
+        content: "";
+        width: 100px;
+        height: 1px;
+        background-color: var(--it-theme-1);
+        display: inline-block;
+        transform: translateY(-6px);
+        margin-left: 10px;
+    }
+
+    &.subtitle-yellow {
+        color: var(--it-theme-2);
+
+        &::after {
+            background-color: var(--it-theme-2);
+        }
+    }
+}
+
+
+.it-section-title {
+    font-size: 45px;
+    color: var(--it-common-black);
+    line-height: 1.2;
+    text-transform: capitalize;
+    @media #{$lg}{
+        font-size: 35px;
+    }
+    @media #{$md}{
+        font-size: 40px;
+        & br{
+            display: none;
+        }
+    }
+    @media #{$xs}{
+        font-size: 33px;
+        & br{
+            display: none;
+        }
+    }
+    & span {
+        color: var(--it-theme-2);
+    }
+
+    &-big {
+        font-size: 150px;
+        position: absolute;
+        top: 33px;
+        left: 0;
+        right: 0;
+        opacity: .1;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--it-theme-1);
+        @media #{$xs}{
+            font-size: 80px;
+            top: 75px;
+        }
+    }
+}
+
+
+
+.it-section-title-sm {
+    font-size: 24px;
+    color: var(--it-common-black);
+    display: inline-block;
+    margin-bottom: 15px;
+    transition: .3s;
+    @media #{$xl}{
+        font-size: 20px;
+    }
+    @media #{$md}{
+        font-size: 20px;
+    }
+}

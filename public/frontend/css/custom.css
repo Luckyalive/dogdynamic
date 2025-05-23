@@ -1,0 +1,263 @@
+.it-header-3-style .it-main-menu nav ul li {
+    margin-right: 30px;
+}
+
+.it-header-3-style .it-main-menu nav ul li a {
+    font-size: 19px;
+}
+.it-main-logo::before {
+    
+    background-color: transparent;
+}
+
+.it-header-3-style .it-main-logo img
+{
+    height: auto;
+}
+.it-main-menu nav ul li > .submenu {
+    width: 406px;
+}
+
+.it-work-wrapper::before {
+    border: none;
+}
+.it-work-2-thumb img {
+    border-radius: 10px;
+    width: 82%;
+}
+.it-shop-details__text-box table tr td {
+    padding: 12px;
+}
+.it-shop-details__text-box table {
+    width: 100%;
+}
+.client-logo {
+    padding: 20px;
+    padding: 20px;
+    background: white;
+    border-right: 2px solid #eaeaea;
+    padding-left: 0;
+}
+
+.it-section-title {
+    font-size: 35px;
+    color: var(--it-common-black);
+}
+.custom-brands{
+    padding: 0px 42px;
+}
+
+.custom-brands h4 {
+    padding-left: 28px;
+}
+
+.it-section-title span{
+
+}
+.it-custom-accordion .accordion-buttons {
+    padding: 15px 60px 15px 30px;
+    font-size: 20px;
+}
+
+p {
+    font-size: 19px;
+}
+
+
+@media (max-width: 992px) {
+
+    .it-header-3-wrap.p-relative {
+        height: 80px;
+    }
+    
+    .it-main-logo {
+        width: 100%;
+        padding: 10px;
+        justify-content: space-between;
+    }
+    .it-main-logo img{
+        width: 230px;
+    }
+}
+
+@media (max-width: 768px) {
+    .it-header-3-wrap.p-relative {
+        height: 80px;
+    }
+    .it-main-logo {
+        width: 100%;
+        padding: 10px;
+        justify-content: space-between;
+    }
+    .it-main-logo img{
+        width: 230px;
+    }
+  }
+
+  .it-main-menu nav ul li > .submenu > li {
+    margin-bottom: 13px;
+}
+
+.service-form h2{
+    font-size: 23px;
+}
+.inquiry-form h3 {
+    font-size: 25px;
+}
+.inquiry-form h3 {
+    background: #40775b;
+    margin-bottom: 0px;
+    padding: 12px 18px;
+    color: white;
+    font-size: 20px;
+}
+
+.inquiry-form {
+    background: #f2f3f39c;
+}
+
+.inquiry-form label {
+    margin-bottom: 0.5rem;
+    font-size: 15px;
+    font-weight: 700;
+    color: #373737;
+}
+
+.inquiry-form input, .inquiry-form select, .inquiry-form textarea {
+    padding: 5px 12px;
+    height: 44px;
+    margin-bottom: 10px;
+}
+.inquiry-form textarea {
+    height: 125px;
+}
+.btn-inquire-now2:hover {
+    background: black !important;
+}
+
+.btn-inquire-now1 {
+    background: #000000;
+    padding: 10px 40px;
+    font-size: 20px;
+    color: white !important;
+    margin-top: 20px;
+    border: 1px solid #ffffff;
+    margin: 0px 14px;
+}
+
+.btn-inquire-now2 {
+    text-transform: uppercase;
+    background: #d73928;
+    padding: 11px 33px;
+    font-size: 19px;
+    color: white !important;
+    border: 0px solid #ffffff;
+    
+    border-radius: 13px;
+    font-weight: 600;
+}
+
+.full-banner .banner-contain h3 {
+    font-size: 60px;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.bg-overlay::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    content: "";
+    opacity: 0.9;
+    z-index: -1;
+    background: var(--it-common-black);
+    left: 0px;
+}
+
+.it-service-item-thumb img {
+    height: 237px;
+    object-fit: cover;
+}
+.it-service-3-item-title {
+    left: -372px;
+}
+
+.it-service-3-item-title::before {
+    background-color: red !important;
+ }
+
+ .it-service-3-thumb img {
+    height: 300px;
+    object-fit: cover;
+}
+.it-service-item:hover {
+    background: #e3e3e3 !important;
+}
+.it-hero-title {
+    font-size: 31px;
+    color: var(--it-common-black);
+    text-transform: capitalize;
+    margin-bottom: 25px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.theme-bg {
+    background-image: var(--it-theme-2) !important;
+}
+
+.it-subtitle::after{
+    
+    background-color: red !important;
+}
+
+.custom-icons{
+font-size: 52px;
+color: black;
+}
+
+.working-process {
+    padding: 27px 7px 0px;
+    margin-top: 5px;
+    transition: 0.3s;
+    height: 180px;
+}
+.working-process h3 {
+    font-size: 22px;
+    margin-top: 11px;
+}
+
+.it-service-item:hover .it-section-title-sm,
+.it-service-item:hover p {
+    color: black;
+}
+
+.it-service-item p {
+    height: 104px;
+}
+
+.it-hero-subtitle.subtitle-yellow {
+    color: wheat;
+}
+
+.brand-slider {
+    margin: 20px auto;
+}
+.brand-slider img {
+    width: 100%;
+}
+.brand-slider img {
+    width: 62%;
+    text-align: center;
+    margin: 0 auto;
+ }
+ .brand-slider {
+margin-bottom: 48px;
+margin-top: 0px;
+}
+
+.brand-slider-wrap{
+    display: none;
+}

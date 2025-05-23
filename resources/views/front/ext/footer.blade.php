@@ -1,114 +1,108 @@
-    <!--Main Footer-->
-    <footer class="main-footer">
-		<div class="auto-container">
-        	<!--Widgets Section-->
-            <div class="widgets-section">
-            	<div class="row clearfix">
-                	
-                    <!--big column-->
-                    <div class="big-column col-md-6 col-sm-12 col-xs-12">
-                        <div class="row clearfix">
-                        
-                            <!--Footer Column-->
-                            <div class="footer-column col-md-7 col-sm-6 col-xs-12">
-                                <div class="footer-widget logo-widget">
-									<div class="logo">
-                                    	<a href="{{route('index')}}"><img src="{{asset('web/media/xs')}}/{{ isset(getWebsiteData()['light_logo']) ? getWebsiteData()['light_logo'] : null}}" alt="" /></a>
-                                    </div>
-                                    <div class="text">DEC Engineering Pvt. Ltd. specializes in delivering comprehensive solutions for Design & Engineering, Procurement, Project Management, Construction, and Plant Retrofitting.</div>
-                                </div>
-                            </div>
-                            
-                            <!--Footer Column-->
-                            <div class="footer-column col-md-5 col-sm-6 col-xs-12">
-                                <div class="footer-widget links-widget">
-                                	<h2>Quick Links</h2>
-                                    <div class="widget-content">
-										<ul class="list">
-                                            
-                                    <li><a href="{{route('index')}}">Home</a></li>
-                                    <li><a href="{{route('about')}}">About Us</a></li>
-                                    <li><a href="{{route('services')}}">Services</a></li>
-                                    <li><a href="{{route('projects')}}">Project Executed</a></li>
-                                    <li><a href="{{route('blog')}}">Blog</a></li>
-                                    <li><a href="{{route('contact')}}">contact Us</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
+<footer>
+
+      <!-- footer-area-start -->
+      <div class="it-footer-area p-relative pt-130 pb-35 black-bg fix">
+         <div class="it-footer-shape-1">
+            <img src="{{asset('frontend/img')}}/footer/shape-1.png" alt="">
+         </div>
+         <div class="it-footer-shape-2">
+            <img src="{{asset('frontend/img')}}/footer/shape-2.png" alt="">
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-3 col-lg-4 col-md-6 mb-60">
+                  <div class="it-footer-widget footer-col-1">
+                     <div class="it-footer-logo mb-25">
+                        @if(isset(getWebsiteData()['light_logo']))
+                           <a href="{{route('index')}}">
+                              <img src="{{asset('web/media/sm')}}/{{getWebsiteData()['light_logo']}}" alt="{{getWebsiteData()['name']}}">
+                           </a>
+                        @endif
+                     </div>
+                     <div class="it-footer-content">
+                        <p>Some links on this website PureProposals.
+                           com contain affiliate links. These links provide
+                           a commission to PureProposals for products
+                           or software purchased. Note that</p>
+                        <div class="it-footer-social">
+                           <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                           <a href="#"><i class="flaticon-twitter-1"></i></a>
+                           <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                           <a href="#"><i class="fa-brands fa-youtube"></i></a>
                         </div>
-                    </div>
-                    
-                    <!--big column-->
-                    <div class="big-column col-md-6 col-sm-12 col-xs-12">
-                        <div class="row clearfix">
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-lg-4 col-md-6 mb-60">
+                  <div class="it-footer-widget footer-col-2">
+                     <h3 class="it-footer-widget-title mb-35">Useful Links</h3>
+                     <div class="it-footer-list">
+                        <ul>
+                           <li><a href="#{{route('avout')}}">About Us</a></li>
+                           <li><a href="#">Project Gallery</a></li>
+                           <li><a href="#">Our Services</a></li>
+                           <li><a href="#">Our Blog</a></li>
+                           <li><a href="#">Our Team</a></li>
+                           <li><a href="#">Contact</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-lg-4 col-md-6 mb-60">
+                  <div class="it-footer-widget footer-col-3">
+                     <h3 class="it-footer-widget-title mb-35">Products & Services</h3>
+                     <div class="it-footer-list">
+                        <ul>
+                           
+                           <li><a href="#">Chapati Maker</a></li>
                         
-                            <!--Footer Column-->
-                            <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                                <div class="footer-widget links-widget">
-                                	<h2>Services</h2>
-                                    <div class="widget-content">
-										<ul class="list">
-                                            
-                                        @foreach(getServices() as $service)
-                                            <li><a href="{{route('services')}}/{{$service->slug}}">{{$service->name}}</a></li>
-                                        @endforeach
-                                        
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                                <div class="footer-widget info-widget">
-                                	<h2>Get In Touch</h2>
-                                    <div class="widget-content">
-                                        
-                                        @if(getWebsiteData()['primary_phone'])<div class="number"><a href="tel:+91{{getWebsiteData()['primary_phone']}}">+91 {{getWebsiteData()['primary_phone']}}</a></div>@endif
-                                        @if(getWebsiteData()['address'])<div class="text">{{getWebsiteData()['address']}}</div>@endif
-                                        @if(getWebsiteData()['primary_mail'])<div class="text">{{getWebsiteData()['primary_mail']}}</div>@endif
-
-                                        
-                                        @if(getSocialMedia())
-                                        <ul class="social-icon-one">
-                                       
-                                        @if(getSocialMedia()['facebook'])<li><a  target="_blank" href="{{getSocialMedia()['facebook']}}"><i class="fa fa-facebook-f"></i></a></li>@endif
-                                        @if(getSocialMedia()['instagram'])<li><a  target="_blank" href="{{getSocialMedia()['instagram']}}"><i class="fa fa-instagram"></i></a></li>@endif
-                                        @if(getSocialMedia()['twitter'])<li><a  target="_blank" href="{{getSocialMedia()['twitter']}}"><i class="fa fa-twitter"></i></a></li>@endif
-                                        @if(getSocialMedia()['youtube'])<li><a  target="_blank" href="{{getSocialMedia()['youtube']}}"><i class="fa fa-youtube"></i></a></li>@endif
-                                        @if(getSocialMedia()['vimeo'])<li><a  target="_blank" href="{{getSocialMedia()['vimeo']}}"><i class="fa fa-vimeo"></i></a></li>@endif
-                                        @if(getSocialMedia()['linkedin'])<li><a  target="_blank" href="{{getSocialMedia()['linkedin']}}"><i class="fa fa-linkedin"></i></a></li>@endif
-                                        @if(getSocialMedia()['pinterest'])<li><a  target="_blank" href="{{getSocialMedia()['pinterest']}}"><i class="fa fa-pinterest"></i></a></li>@endif
-                                        @if(getSocialMedia()['skype'])<li><a  target="_blank" href="{{getSocialMedia()['skype']}}"><i class="fa fa-skype"></i></a></li>@endif
-                                        </ul>
-
-                                    @endif
-                            
-                                    </div>
-                                </div>
-                            </div>
-                            
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-lg-4 col-md-6 mb-60">
+                  <div class="it-footer-widget p-relative footer-col-4">
+                     <h3 class="it-footer-widget-title mb-35">Contact</h3>
+                     <div class="it-footer-contact">
+                        <div class="it-footer-info d-flex align-items-center">
+                           <i class="flaticon-map"></i>
+                           <a href="#">569 Cost AvenueSilver Spring,
+                              MD 20910.New york</a>
                         </div>
-                    </div>
-                    
-                </div>
+                        <div class="it-footer-info d-flex align-items-center">
+                           <i class="flaticon-phone-call"></i>
+                           <a href="tel:890301-415-5058">(+890)301-415-5058</a>
+                        </div>
+                        <div class="it-footer-info d-flex align-items-center">
+                           <i class="flaticon-email"></i>
+                           <a href="mailto:ekomfy@gmail.com">ekomfy@gmail.com</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-            
-            <div class="footer-bottom">
-                <div class="clearfix">
-                    <div class="pull-left">
+         </div>
+      </div>
+      <!-- footer-area-end -->
 
-                        <div class="copyright">&copy; Copyright 2025 © DEC Engineering pvt.ltd, All rights reserved.</div>
-                    </div>
-                    <div class="pull-right">
-                        <div class="created"><p class=" mb-0">Design & Developed by <a target="_blank" href="https://www.alivecreate.com">Alivecreate Web Solutions</a><i class="fa fa-heart"></i></p></div>
-                    </div>
-                </div>
+      <!-- copyright area start -->
+      <div class="it-copyright-area pt-15 pb-15 theme-bg">
+         <div class="container">
+            <div class="row align-items-center">
+               <div class="col-xl-6 col-lg-6">
+                  <div class="it-copyright-content text-center text-lg-start">
+                     <p>Copyright © 2023 <span><a href="{{route('index')}}">Solvra</a></span>. All Rights Reserved Crated by
+                        <span><a href="#">ordianit</a></span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6">
+                  <div class="it-copyright-privacy text-center text-lg-end">
+                     <a href="#">Terms & Conditions - Privacy Policy - Sitemap</a>
+                  </div>
+               </div>
             </div>
-            
-        </div>
+         </div>
+      </div>
+      <!-- copyright area end -->
 
-@include('front.widget.inquiry-popup')
-        
-    </footer>
+</footer>

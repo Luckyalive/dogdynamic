@@ -10,23 +10,38 @@ use Countable;
 use Traversable;
 use IteratorAggregate;
 
+/**
+ * @implements IteratorAggregate<int|string, mixed>
+ */
 class Collection implements CollectionInterface, IteratorAggregate, Countable
 {
+    /**
+     * Create new collection object
+     *
+     * @param array<int|string, mixed> $items
+     * @return void
+     */
     public function __construct(protected array $items = [])
     {
+        //
     }
 
     /**
      * Static constructor
      *
-     * @param array $items
-     * @return self
+     * @param array<int|string, mixed> $items
+     * @return self<int|string, mixed>
      */
     public static function create(array $items = []): self
     {
         return new self($items);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @see CollectionInterface::has()
+     */
     public function has(int|string $key): bool
     {
         return array_key_exists($key, $this->items);
@@ -35,13 +50,18 @@ class Collection implements CollectionInterface, IteratorAggregate, Countable
     /**
      * Returns Iterator
      *
-     * @return Traversable
+     * @return Traversable<int|string, mixed>
      */
     public function getIterator(): Traversable
     {
         return new ArrayIterator($this->items);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @see CollectionInterface::toArray()
+     */
     public function toArray(): array
     {
         return $this->items;
@@ -61,7 +81,7 @@ class Collection implements CollectionInterface, IteratorAggregate, Countable
      * Append new item to collection
      *
      * @param mixed $item
-     * @return CollectionInterface
+     * @return CollectionInterface<int|string, mixed>
      */
     public function push($item): CollectionInterface
     {
@@ -133,7 +153,7 @@ class Collection implements CollectionInterface, IteratorAggregate, Countable
             return $this->items[$query];
         }
 
-        if (is_string($query) && strpos($query, '.') === false) {
+        if (is_string($query) && !str_contains($query, '.')) {
             return array_key_exists($query, $this->items) ? $this->items[$query] : $default;
         }
 
@@ -154,28 +174,37 @@ class Collection implements CollectionInterface, IteratorAggregate, Countable
         return $result;
     }
 
+    /**
+     * Map each item of collection by given callback
+     *
+     * @param callable $callback
+     * @return self
+     */
     public function map(callable $callback): self
     {
-        $items = array_map(function ($item) use ($callback) {
-            return $callback($item);
-        }, $this->items);
 
-        return new self($items);
+        return new self(
+            array_map(
+                fn(mixed $item) => $callback($item),
+                $this->items,
+            )
+        );
     }
 
     /**
      * Run callback on each item of the collection an remove it if it does not return true
      *
      * @param callable $callback
-     * @return Collection
+     * @return self
      */
     public function filter(callable $callback): self
     {
-        $items = array_filter($this->items, function ($item) use ($callback) {
-            return $callback($item);
-        });
-
-        return new self($items);
+        return new self(
+            array_filter(
+                $this->items,
+                fn(mixed $item) => $callback($item),
+            )
+        );
     }
 
     /**

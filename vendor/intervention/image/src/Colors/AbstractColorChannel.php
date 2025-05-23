@@ -6,8 +6,9 @@ namespace Intervention\Image\Colors;
 
 use Intervention\Image\Exceptions\ColorException;
 use Intervention\Image\Interfaces\ColorChannelInterface;
+use Stringable;
 
-abstract class AbstractColorChannel implements ColorChannelInterface
+abstract class AbstractColorChannel implements ColorChannelInterface, Stringable
 {
     protected int $value;
 
@@ -52,7 +53,7 @@ abstract class AbstractColorChannel implements ColorChannelInterface
      *
      * @see ColorChannelInterface::normalize()
      */
-    public function normalize($precision = 32): float
+    public function normalize(int $precision = 32): float
     {
         return round(($this->value() - $this->min()) / ($this->max() - $this->min()), $precision);
     }

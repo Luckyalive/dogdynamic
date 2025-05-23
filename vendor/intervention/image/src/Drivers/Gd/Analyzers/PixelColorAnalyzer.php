@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace Intervention\Image\Drivers\Gd\Analyzers;
 
 use GdImage;
-use Intervention\Image\Drivers\DriverSpecialized;
+use Intervention\Image\Analyzers\PixelColorAnalyzer as GenericPixelColorAnalyzer;
 use Intervention\Image\Exceptions\ColorException;
 use Intervention\Image\Exceptions\GeometryException;
-use Intervention\Image\Interfaces\AnalyzerInterface;
 use Intervention\Image\Interfaces\ColorInterface;
 use Intervention\Image\Interfaces\ColorspaceInterface;
 use Intervention\Image\Interfaces\ImageInterface;
+use Intervention\Image\Interfaces\SpecializedInterface;
 
-/**
- * @property int $x
- * @property int $y
- * @property int $frame_key
- */
-class PixelColorAnalyzer extends DriverSpecialized implements AnalyzerInterface
+class PixelColorAnalyzer extends GenericPixelColorAnalyzer implements SpecializedInterface
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @see AnalyzerInterface::analyze()
+     */
     public function analyze(ImageInterface $image): mixed
     {
         return $this->colorAt(
@@ -35,6 +35,10 @@ class PixelColorAnalyzer extends DriverSpecialized implements AnalyzerInterface
     protected function colorAt(ColorspaceInterface $colorspace, GdImage $gd): ColorInterface
     {
         $index = @imagecolorat($gd, $this->x, $this->y);
+
+        if (!imageistruecolor($gd)) {
+            $index = imagecolorsforindex($gd, $index);
+        }
 
         if ($index === false) {
             throw new GeometryException(

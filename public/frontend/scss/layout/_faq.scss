@@ -1,0 +1,104 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  09. faq area start
+/*----------------------------------------*/
+
+.it-faq {
+    &-title {
+        &-box {
+            margin-bottom: 45px;
+
+            @media #{$lg} {
+                margin-bottom: 40px;
+            }
+        }
+    }
+
+    &-thumb {
+        border-radius: 10px;
+        position: relative;
+        &-1 {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            &::after{
+                position: absolute;
+                top: 0;
+                left: -80%;
+                z-index: 2;
+                display: block;
+                content: "";
+                width: 50%;
+                height: 100%;
+                background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+                background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.3)));
+                background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+                -webkit-transform: skewX(-25deg);
+                -ms-transform: skewX(-25deg);
+                transform: skewX(-25deg);
+                z-index: 1;
+            }
+        }
+        &:hover {
+           & .it-faq-thumb-1{
+                &::after{
+                    -webkit-animation: shine 1s;
+                    animation: shine 1s;
+                }
+           }
+            & img {
+                transform: scale(1.1);
+            }
+        }
+        @media #{$sm} {
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+
+        &-box {
+            top: 40px;
+            @media #{$md} {
+                margin-bottom: 50px;
+            }
+        }
+
+        & > span {
+            position: absolute;
+            width: 597px;
+            height: 667px;
+            background-color: var(--it-theme-1);
+            content: "";
+            top: -30px;
+            right: -10px;
+            border-radius: 10px;
+            z-index: -1;
+            @media #{$xl,$lg,$md,$xs} {
+                display: none;
+            }
+            @media #{$lg} {
+                width: 300px;
+                height: 400px;
+            }
+
+            @media #{$md} {
+                left: 15%;
+            }
+
+            @media #{$sm} {
+                left: 20px;
+                bottom: -8px;
+            }
+
+            @media #{$xs} {
+                display: none;
+            }
+        }
+
+        & img {
+            border-radius: 10px;
+            transition: 1.2s;
+        }
+    }
+}

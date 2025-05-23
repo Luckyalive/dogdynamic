@@ -5,26 +5,20 @@ declare(strict_types=1);
 namespace Intervention\Image\Drivers\Imagick\Modifiers;
 
 use Imagick;
-use Intervention\Image\Drivers\DriverSpecialized;
 use Intervention\Image\Interfaces\ImageInterface;
-use Intervention\Image\Interfaces\ModifierInterface;
+use Intervention\Image\Interfaces\SpecializedInterface;
+use Intervention\Image\Modifiers\BlendTransparencyModifier as GenericBlendTransparencyModifier;
 
-/**
- * @property mixed $color
- */
-class BlendTransparencyModifier extends DriverSpecialized implements ModifierInterface
+class BlendTransparencyModifier extends GenericBlendTransparencyModifier implements SpecializedInterface
 {
     public function apply(ImageInterface $image): ImageInterface
     {
-        // decode blending color
-        $color = $this->driver()->handleInput(
-            $this->color ? $this->color : $image->blendingColor()
-        );
+        $blendingColor = $this->blendingColor($this->driver());
 
-        // get imagickpixel from color
+        // get imagickpixel from blending color
         $pixel = $this->driver()
             ->colorProcessor($image->colorspace())
-            ->colorToNative($color);
+            ->colorToNative($blendingColor);
 
         // merge transparent areas with the background color
         foreach ($image as $frame) {

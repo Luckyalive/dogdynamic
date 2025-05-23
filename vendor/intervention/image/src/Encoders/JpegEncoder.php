@@ -4,8 +4,23 @@ declare(strict_types=1);
 
 namespace Intervention\Image\Encoders;
 
-use Intervention\Image\Interfaces\SpecializableInterface;
+use Intervention\Image\Drivers\SpecializableEncoder;
 
-class JpegEncoder extends SpecializableEncoder implements SpecializableInterface
+class JpegEncoder extends SpecializableEncoder
 {
+    /**
+     * Create new encoder object
+     *
+     * @param int $quality
+     * @param bool $progressive
+     * @param null|bool $strip Strip EXIF metadata
+     * @return void
+     */
+    public function __construct(
+        public int $quality = self::DEFAULT_QUALITY,
+        public bool $progressive = false,
+        public ?bool $strip = null
+    ) {
+        //
+    }
 }

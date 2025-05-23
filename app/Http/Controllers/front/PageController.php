@@ -15,6 +15,9 @@ use App\Models\admin\Category;
 use App\Models\admin\Client;
 use App\Models\admin\Certificate;
 
+use App\Models\admin\Gallery;
+
+
 use App\Models\admin\Blog;
 use App\Models\admin\ProductInquiry;
 use App\Models\admin\ProductQuantity;
@@ -36,18 +39,22 @@ class PageController extends Controller
 
     }
     public function about(){
+        $pagetitle = 'About Us';
+        $name = 'About Us';
         $clients = Client::where('status', 1)->orderBy('id', 'asc')->get(); 
         $certificates = Certificate::where('status', 1)->orderBy('id', 'asc')->get(); 
-        return view('front.pages.about-us', compact('clients', 'certificates'));
+        return view('front.pages.about', compact('clients', 'certificates', 'pagetitle','name'));
     }
 
     
     
     public function gallery(){
-        
+        $pagetitle = 'gallery';
+        $name = 'gallery';
+
         $gallery = Gallery::where('status', 1)->orderBy('id', 'desc')->paginate(12);
 
-        return view('front.pages.gallery', compact('gallery'));
+        return view('front.pages.gallery', compact('gallery','pagetitle','name'));
     }
 
     
@@ -58,33 +65,54 @@ class PageController extends Controller
     }
 
     public function blog(){
+
+        $slider = Slider::all(); 
+        $pagetitle = 'Blog';
+        $name = 'Blog';
         $blogs = Blog::where('status', 1)->orderBy('id', 'desc')->paginate(12);
 
-        return view('front.pages.blog', compact('blogs'));
+        
+        return view('front.pages.blog', compact('blogs','slider', 'pagetitle','name'));
+
+        
+        // return view('front.pages.blog', compact('blogs'));
     }
 
     
     public function blogDetail($slug){
         
+        
         $blog = Blog::where(['slug' => $slug, 'status' => 1])->first();
         $blogs = Blog::where('status', 1)->orderBy('id', 'desc')->paginate(12);
-        
+               
+        $name = 'Blog';
         if(!isset($blog)){
             return redirect(route('blog'));
         }
-            return view('front.pages.blog-detail', compact('blog', 'blogs'));
+        
+        $name = 'Blog';
+        $pagetitle = $blog->title;
+        return view('front.pages.blog-details', compact('blog', 'blogs', 'pagetitle', 'name'));
+
+
 
     }
 
 
     public function contact(){
         $slider = Slider::all(); 
-        return view('front.pages.contact-us', compact('slider'));
+        $pagetitle = 'Cotact Us';
+        $name = 'Cotact Us';
+        return view('front.pages.contact', compact('slider', 'pagetitle','name'));
+
+        
     }
     
     
     public function products(){
         
+        $pagetitle = 'Our Products';
+        $name = 'Our Products';
         Session::forget('cartData');
         $categories = Category::where('status', 1)                
                     ->whereNotIn('slug', [])
@@ -92,23 +120,62 @@ class PageController extends Controller
                     
         $products = Product::where('status', 1)->get(); 
         
-        return view('front.pages.our-products', compact('products', 'categories'));
+        return view('front.pages.product', compact('products', 'categories', 'pagetitle','name'));
     }
 
+
+
+
+
+//     public function productDetails(){
+//         $pagetitle = 'Product Details';
+//         $name = 'Product Details';
+
+//         return view('front.pages.product-details',compact('pagetitle', 'name'));
+//     }
+
+
+// public function productDetails(){
+//     $pagetitle = 'Product Details';
+//     $name = 'Product Details';
+
+//     return view('front.pages.product-details', compact('pagetitle', 'name'));
+// }
+
+
+public function productDetails($slug){
+    $pagetitle = 'Product Details';
+    $name = 'Product Details';
     
+    $product = Product::where(['slug' => $slug])->first();
+
+    return view('front.pages.product-details',compact('pagetitle','name', 'product'));
+ }
+
+
+
+
     public function services(){
-        return view('front.pages.services');
+
+        $pagetitle = 'Services ';
+        $name = 'Services';
+        $services = Service::orderBy('id', 'desc')->paginate(12);
+        // dd($services);
+
+        return view('front.pages.services',compact('pagetitle','name','services'));
     }
     
     public function serviceDetail($slug){
           
+        $pagetitle = 'Services ';
+        $name = 'Services';
         $service = Service::where(['slug' => $slug])->first();
-        $services = Service::where('status', 1)->orderBy('id', 'desc')->paginate(12);
-        
+        $services = Service::orderBy('id', 'desc')->get();
+        // dd($services);
         if(!isset($service)){
             return redirect(route('service'));
         }
-            return view('front.pages.service-detail', compact('service', 'services'));
+            return view('front.service-detail', compact('service', 'services', 'pagetitle','name'));
 
     }
     

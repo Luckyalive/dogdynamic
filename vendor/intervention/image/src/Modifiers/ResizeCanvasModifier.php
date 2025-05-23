@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Image\Modifiers;
 
+use Intervention\Image\Drivers\SpecializableModifier;
 use Intervention\Image\Exceptions\RuntimeException;
 use Intervention\Image\Geometry\Rectangle;
 use Intervention\Image\Interfaces\ImageInterface;
@@ -11,6 +12,15 @@ use Intervention\Image\Interfaces\SizeInterface;
 
 class ResizeCanvasModifier extends SpecializableModifier
 {
+    /**
+     * Create new modifier object
+     *
+     * @param null|int $width
+     * @param null|int $height
+     * @param mixed $background
+     * @param string $position
+     * @return void
+     */
     public function __construct(
         public ?int $width = null,
         public ?int $height = null,
@@ -20,17 +30,26 @@ class ResizeCanvasModifier extends SpecializableModifier
     }
 
     /**
+     * Build the crop size to be used for the ResizeCanvas process
+     *
+     * @param ImageInterface $image
+     * @param bool $relative
      * @throws RuntimeException
+     * @return SizeInterface
      */
-    public function cropSize(ImageInterface $image): SizeInterface
+    protected function cropSize(ImageInterface $image, bool $relative = false): SizeInterface
     {
-        $width = is_null($this->width) ? $image->width() : $this->width;
-        $height = is_null($this->height) ? $image->height() : $this->height;
+        $size = match ($relative) {
+            true => new Rectangle(
+                is_null($this->width) ? $image->width() : $image->width() + $this->width,
+                is_null($this->height) ? $image->height() : $image->height() + $this->height,
+            ),
+            default => new Rectangle(
+                is_null($this->width) ? $image->width() : $this->width,
+                is_null($this->height) ? $image->height() : $this->height,
+            ),
+        };
 
-        return (new Rectangle($width, $height))
-            ->alignPivotTo(
-                $image->size(),
-                $this->position
-            );
+        return $size->alignPivotTo($image->size(), $this->position);
     }
 }

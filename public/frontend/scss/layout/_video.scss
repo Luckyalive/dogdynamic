@@ -1,0 +1,246 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  25. Video area start
+/*----------------------------------------*/
+
+.it-video {
+    &-shape {
+        position: relative;
+
+        &::before,
+        &::after {
+            position: absolute;
+            top: -190px;
+            left: -135px;
+            width: 514px;
+            height: 514px;
+            opacity: .2;
+            content: "";
+            border-radius: 50%;
+            background: #00A69C;
+            z-index: 1;
+        }
+
+        &::after {
+            top: 79px;
+            left: auto;
+            right: -40px;
+        }
+    }
+
+    &-wrapp {
+        border-radius: 10px;
+    }
+
+    &-content {
+        padding: 45px 76px;
+
+        @media #{$md} {
+            padding: 40px 45px;
+        }
+
+        @media #{$xs} {
+            padding: 55px 30px;
+        }
+    }
+
+    &-text {
+        & p {
+            color: var(--it-common-white);
+            margin-right: 60px;
+
+            @media #{$xl,$xs} {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &-thumb {
+        @media #{$md,$xs} {
+            margin-top: 40px;
+        }
+
+        &-box {
+            width: 372px;
+            height: 271px;
+            left: 90px;
+
+            @media #{$xl} {
+                left: 0;
+            }
+
+            @media #{$lg} {
+                left: 0;
+            }
+
+            @media #{$xs} {
+                width: 100%;
+                height: 100%;
+                left: 0;
+            }
+        }
+    }
+
+    &-play {
+        position: absolute;
+        font-size: 12px;
+        top: 50%;
+        left: 0;
+        right: 0;
+        color: var(--it-theme-1);
+        transform: translateY(-50%);
+        text-align: center;
+        margin: auto;
+
+        & i {
+            width: 41px;
+            height: 41px;
+            line-height: 41px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: var(--it-common-white);
+            animation: it-pulse-3 1.5s infinite;
+        }
+    }
+}
+
+.it-video-2 {
+    &-area {
+        margin-top: -280px;
+
+        &.video-style-2 {
+            position: relative;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+
+            &::before {
+                position: absolute;
+                width: 100%;
+                top: 0;
+                height: 100%;
+                content: "";
+                background: #021609;
+                opacity: 0.8;
+                
+            }
+        }
+
+    }
+
+    &-wrapp {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        padding: 152px 160px;
+        @media #{$xl}{
+            padding: 152px 60px;
+        }
+        @media #{$xs}{
+            padding: 90px 20px;
+        }
+        &::after {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            content: "";
+            top: 0;
+            left: 0;
+            opacity: .6;
+            border-radius: 10px;
+            background-color: var(--it-common-black);
+            z-index: -2;
+        }
+    }
+
+    &-big-title {
+        font-size: 120px;
+        font-weight: 800;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        @media #{$xl}{
+            font-size: 100px;
+        }
+        @media #{$lg,$md}{
+            margin-bottom: 50px;
+        }
+        @media #{$xs}{
+            margin-bottom: 50px;
+            font-size: 80px;
+        }
+        & span {
+            margin-left: 215px;
+            @media #{$md,$xs}{
+                margin-left: 0;
+            }
+        }
+    }
+
+    &-icon-box {
+        & a {
+            position: relative;
+            width: 104px;
+            height: 104px;
+            background-color: var(--it-common-white);
+            display: inline-block;
+            line-height: 104px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 17px;
+            color: var(--it-common-black);
+
+            &::after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 1px solid var(--it-common-white);
+                opacity: 0.5;
+                content: "";
+                border-radius: 50%;
+                transform: scale(1.5)
+            }
+
+            &::before {
+                position: absolute;
+                top: 50px;
+                left: -150%;
+                width: 448px;
+                height: 448px;
+                content: "";
+                border-radius: 45% 45% 80% 66%/62% 47% 82% 35%;
+                background-color: var(--it-theme-1);
+                opacity: 0.5;
+                z-index: -1;
+                transform: translateY(-50%);
+                @media #{$lg,$md,$xs}{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.video-style-2{
+    & .it-section-title{
+        @media #{$sm} {
+            font-size: 33px;
+        }
+        @media #{$xs} {
+            font-size: 30px;
+        }
+    }
+
+    & .it-video-action{
+        & a{
+            @media #{$xs} {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

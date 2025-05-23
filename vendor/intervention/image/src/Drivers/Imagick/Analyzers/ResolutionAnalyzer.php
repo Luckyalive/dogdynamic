@@ -4,15 +4,22 @@ declare(strict_types=1);
 
 namespace Intervention\Image\Drivers\Imagick\Analyzers;
 
-use Intervention\Image\Drivers\DriverSpecialized;
-use Intervention\Image\Interfaces\AnalyzerInterface;
+use Intervention\Image\Analyzers\ResolutionAnalyzer as GenericResolutionAnalyzer;
 use Intervention\Image\Interfaces\ImageInterface;
+use Intervention\Image\Interfaces\SpecializedInterface;
 use Intervention\Image\Resolution;
 
-class ResolutionAnalyzer extends DriverSpecialized implements AnalyzerInterface
+class ResolutionAnalyzer extends GenericResolutionAnalyzer implements SpecializedInterface
 {
     public function analyze(ImageInterface $image): mixed
     {
-        return new Resolution(...$image->core()->native()->getImageResolution());
+        $imagick = $image->core()->native();
+        $imageResolution = $imagick->getImageResolution();
+
+        return new Resolution(
+            $imageResolution['x'],
+            $imageResolution['y'],
+            $imagick->getImageUnits(),
+        );
     }
 }

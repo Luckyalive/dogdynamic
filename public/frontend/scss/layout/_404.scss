@@ -1,0 +1,52 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  02 Error area start
+/*----------------------------------------*/
+
+.it-error{
+    &-content {
+        padding: 50px 110px;
+        @media #{$md} {
+            padding: 50px 30px;
+        }
+        @media #{$xs} {
+            padding: 15px 0px;
+        }
+        @media #{$sm} {
+            padding: 50px 0px;
+        }
+    
+        &-wrapp {
+            border-top: 1px dashed;
+            border-bottom: 1px dashed;
+        }
+    
+        & .it-section-title {
+            font-weight: 800;
+    
+            & span {
+                color: var(--it-theme-1);
+            }
+    
+            @media #{$xl} {
+                font-size: 36px;
+            }
+            @media #{$lg,$md} {
+                font-size: 28px;
+            }
+            @media #{$sm} {
+                font-size: 26px;
+            }
+        }
+    }
+
+    &-button{
+        @media #{$xs} {
+            margin-bottom: 30px;
+        }
+        @media #{$sm} {
+            margin-bottom: 0;
+        }
+    }
+}

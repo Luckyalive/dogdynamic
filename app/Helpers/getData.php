@@ -1,21 +1,38 @@
 <?php
 use App\Models\admin\Website;
+use App\Models\admin\Slider;
+use App\Models\admin\Service;
 use App\Models\admin\Category;
 use App\Models\admin\Product;
-use App\Models\admin\ProductImage;
-use App\Models\admin\SocialMedia;
 use App\Models\admin\Testimonial;
 use App\Models\admin\Team;
-use App\Models\admin\Blog;
-use App\Models\admin\CustomCode;
-use App\Models\admin\ProductInquiry;
+use App\Models\admin\Client;
+use App\Models\admin\SocialMedia;
 use App\Models\admin\Inquiry;
-use App\Models\admin\Service;
-use App\Models\admin\Industry;
+use App\Models\admin\Vendor;
+use App\Models\admin\ProductInquiry;
+use App\Models\admin\CustomCode;
+use App\Models\admin\Blog;
+use App\Models\admin\ProductImage;
 
 
+function getVenderLoginData(){
+    $sessionId = Session::get('isLoginSession');
+    $data = Vendor::find($sessionId);
 
+    return $data;
+}
 
+function getProductImage($id){
+    // dd($id);
+    $data = ProductImage::where('product_id', $id)->first(); 
+    if($data){
+        return $data;
+    }
+    return null;
+    // dd($data);
+    return $data;
+}
 function getWebsiteData(){
     $website = Website::first();
 
@@ -25,17 +42,17 @@ function getWebsiteData(){
     return null;
 }
 
-function getServiceList(){
-    $data = ['Design & Engineering',
-                'Supply & Fabrication Of Equipments At Workshop',
-                'Equipment Erection',
-                'Fabrication & Installation of Tanks and Vessels at Site',
-                'Fabrication & Erection Of Piping',
-                'Testing & Commissioning',
-                'Retrofitting, Modification & Shutdown Work',
-                'Mechanical Maintenance Of work',
-                'Fabrication & Erection Of Structure', 'Other'
-    ];
+function getSliders(){
+    $sliders = Slider::where('status', 1)->get();
+
+    if ($sliders) {
+        return $sliders;
+    }
+    return null;
+}
+
+function getClients(){
+    $data = Client::where('status', 1)->get();
 
     if ($data) {
         return $data;
@@ -43,24 +60,44 @@ function getServiceList(){
     return null;
 }
 
-function getFarmingServiceList(){
-    $data = [
-        'End-to-End Package Solutions', 'Individual Solutions', 'Hydroponic Farming Package', 'Individual for Hydroponic Farming'
-    ];
 
-    if ($data) {
-        return $data;
+function getTotalBlogs(){
+    return Blog::count();
+}
+
+
+
+
+
+// function getServices(){
+//     $data = [
+//         'Residential Solar Rooftops', 'Commercial Solar Solutions', 'Industrial Solar Rooftops', 'Ground Mounted Solar', 'Submersible Solar', 'Street Solar Lighting', 'Solar Gazebo', 'Solar Rotational Structure'    
+//     ];
+
+//     if ($data) {
+//         return $data;
+//     }
+//     return null;
+// }
+
+
+function getServices(){
+    $services = Service::where('status', 1)->get();
+
+    if ($services) {
+        return $services;
+    }
+    return null;
+}
+function getCustomCode(){
+    $code = CustomCode::first();
+
+    if ($code) {
+        return $code;
     }
     return null;
 }
 
-function getTotalCategories(){
-    return Category::count();
-}
-
-function getTotalProducts(){
-    return Product::count();
-}
 
 function getTotalProductInquiry(){
     return ProductInquiry::count();
@@ -77,10 +114,17 @@ function getTotalTeam(){
     return Team::count();
 }
 
-function getTotalBlogs(){
-    return Blog::count();
+function getTotalCategories(){
+    return Category::count();
 }
 
+function getTotalProducts(){
+    return Product::count();
+}
+
+function getTotalInquiries(){
+    return Inquiry::count();
+}
 
 function getSocialMedia(){
     $socialMedia = SocialMedia::first();
@@ -90,137 +134,32 @@ function getSocialMedia(){
     return null;
 }
 
+function getCategory($categoryId){
+    $category = Category::find($categoryId);
+    // dd($category);
+    if ($category) {
+        return $category;
+    }
+    return null;
+}
+
+
 function getCategories(){
-    $categories = Category::where('status', '1')->get();
+    $categories = Category::where('status', 1)
+    ->has('products') // Add this line to check if the category has at least one product
+    ->get();
+    
+
     if ($categories) {
         return $categories;
     }
     return null;
 }
 
-function getServices(){
-    $services = Service::get();
-    if ($services) {
-        return $services;
-    }
-    return null;
-}
-
-function getIndustries(){
-    $industries = Industry::get();
-    if ($industries) {
-        return $industries;
-    }
-    return null;
-}
-
 function getTestimonials(){
-    $testimonials = Testimonial::where('status', '1')->get();
-    if ($testimonials) {
-        return $testimonials;
-    }
-    return null;
+    return Testimonial::where('status', 1)->get();
 }
 
 function getTeams(){
-    $teams = Team::where('status', '1')->get();
-    if ($teams) {
-        return $teams;
-    }
-    return null;
-}
-function getLatestBlogs($limit = 4){
-    $blogs = Blog::where('status', '1')->orderBy('id', 'desc')->limit($limit)->get();
-    if ($blogs) {
-        return $blogs;
-    }
-    return null;
-}
-
-function getSpecificBlogs($limit = 4, $skip = 0){
-    $blogs = Blog::orderBy('id', 'desc')->skip($skip)->take($limit)->get();
-    return $blogs;
-}
-
-
-
-function getVegetable(){
-    $vegetable = Product::where('slug', 'vegetable')->get(); 
-    if ($vegetable) {
-        return $vegetable;
-    }
-    return null;
-}
-
-function isExistProduct($id){
-    $data = Product::where('category_id', $id)->count(); 
-    return $data;
-}
-
-function findProductData($id){
-    $data = Product::where('id', $id)->get(); 
-    return $data;
-}
-
-function findSingleProduct($id){
-    $data = Product::where('id', $id)->first(); 
-    return json_decode($data, true);
-    return $data;
-}
-
-function getProductsFromArray($productIds){
-    $data = explode(', ', $productIds);
-    // $data = ProductImage::where('product_id', $id)->first();
-    return $data;
-}
-
-function getProductImage($id){
-    $data = ProductImage::where('product_id', $id)->first(); 
-    return $data;
-}
-
-
-function getCities(){
-    $cities = [
-        ["name" => "Ahmedabad", "value" => "Ahmedabad"],
-        ["name" => "Surat", "value" => "Surat"],
-        ["name" => "Vadodara", "value" => "Vadodara"],
-        ["name" => "Rajkot", "value" => "Rajkot"],
-        ["name" => "Bhavnagar", "value" => "Bhavnagar"],
-        ["name" => "Jamnagar", "value" => "Jamnagar"],
-        ["name" => "Junagadh", "value" => "Junagadh"],
-        ["name" => "Gandhinagar", "value" => "Gandhinagar"],
-        ["name" => "Anand", "value" => "Anand"],
-        ["name" => "Nadiad", "value" => "Nadiad"],
-        ["name" => "Bharuch", "value" => "Bharuch"],
-        ["name" => "Gandhidham", "value" => "Gandhidham"],
-        ["name" => "Mehsana", "value" => "Mehsana"],
-        ["name" => "Morbi", "value" => "Morbi"],
-        ["name" => "Bhuj", "value" => "Bhuj"],
-        ["name" => "Ankleshwar", "value" => "Ankleshwar"],
-        ["name" => "Vapi", "value" => "Vapi"],
-        ["name" => "Porbandar", "value" => "Porbandar"],
-        ["name" => "Palanpur", "value" => "Palanpur"],
-        ["name" => "Valsad", "value" => "Valsad"],
-        // Add more cities as needed
-    ];
-
-      return $cities;
-}
-
-function getCustomCode(){
-    $data = CustomCode::find(1);
-    
-    if ($data) {
-        return $data;
-    }
-    return null;
-}
-
-function stringToArray($string){
-    
-    if ($string) {
-        return explode(', ', $string);
-    }
-    return null;
-}
+    return Team::where('status', 1)->get();
+}   

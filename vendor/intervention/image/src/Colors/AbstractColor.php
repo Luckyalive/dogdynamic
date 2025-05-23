@@ -8,24 +8,39 @@ use Intervention\Image\Exceptions\ColorException;
 use Intervention\Image\Interfaces\ColorChannelInterface;
 use Intervention\Image\Interfaces\ColorInterface;
 use Intervention\Image\Interfaces\ColorspaceInterface;
+use ReflectionClass;
+use Stringable;
 
-abstract class AbstractColor implements ColorInterface
+abstract class AbstractColor implements ColorInterface, Stringable
 {
     /**
      * Color channels
+     *
+     * @var array<ColorChannelInterface>
      */
     protected array $channels;
 
+    /**
+     * {@inheritdoc}
+     *
+     * @see ColorInterface::channels()
+     */
     public function channels(): array
     {
         return $this->channels;
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @see ColorInterface::channel()
+     */
     public function channel(string $classname): ColorChannelInterface
     {
-        $channels = array_filter($this->channels(), function (ColorChannelInterface $channel) use ($classname) {
-            return $channel::class == $classname;
-        });
+        $channels = array_filter(
+            $this->channels(),
+            fn(ColorChannelInterface $channel): bool => $channel::class === $classname,
+        );
 
         if (count($channels) == 0) {
             throw new ColorException('Color channel ' . $classname . ' could not be found.');
@@ -34,11 +49,17 @@ abstract class AbstractColor implements ColorInterface
         return reset($channels);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @see ColorInterface::normalize()
+     */
     public function normalize(): array
     {
-        return array_map(function (ColorChannelInterface $channel) {
-            return $channel->normalize();
-        }, $this->channels());
+        return array_map(
+            fn(ColorChannelInterface $channel): float => $channel->normalize(),
+            $this->channels(),
+        );
     }
 
     /**
@@ -48,9 +69,10 @@ abstract class AbstractColor implements ColorInterface
      */
     public function toArray(): array
     {
-        return array_map(function (ColorChannelInterface $channel) {
-            return $channel->value();
-        }, $this->channels());
+        return array_map(
+            fn(ColorChannelInterface $channel): int => $channel->value(),
+            $this->channels()
+        );
     }
 
     /**
@@ -66,6 +88,20 @@ abstract class AbstractColor implements ColorInterface
         };
 
         return $colorspace->importColor($this);
+    }
+
+    /**
+     * Show debug info for the current color
+     *
+     * @return array<string, int>
+     */
+    public function __debugInfo(): array
+    {
+        return array_reduce($this->channels(), function (array $result, ColorChannelInterface $item) {
+            $key = strtolower((new ReflectionClass($item))->getShortName());
+            $result[$key] = $item->value();
+            return $result;
+        }, []);
     }
 
     /**

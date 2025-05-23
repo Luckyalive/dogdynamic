@@ -1,0 +1,112 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  08. cta area start
+/*----------------------------------------*/
+
+.it-cta {
+    &-title {
+        font-weight: 700;
+        font-size: 45px;
+        line-height: 122%;
+        text-transform: capitalize;
+        text-align: center;
+        margin-right: 10px;
+        color: var(--it-common-white);
+        @media #{$xs}{
+            font-size: 35px;
+        }
+    }
+
+    &-img {
+        &-1 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            @media #{$xxl} {
+                left: -10%;
+            }
+            @media #{$xl} {
+                left: -14%;
+            }
+            & img {
+                border-radius: 0 250px 0 0;
+            }
+        }
+
+        &-2 {
+            position: absolute;
+            right: 0;
+            top: 0;
+            @media #{$xxl} {
+                right: -10%;
+            }
+            @media #{$xl} {
+                right: -14%;
+            }
+            & img {
+                border-radius: 0 0 0 250px;
+            }
+        }
+    }
+
+    &-shape {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+
+        & img{
+            animation: rotate2 15s linear infinite;
+        }
+    }
+}
+
+.it-cta-2 {
+    &-area{
+        margin-right: 300px;
+        @media #{$xxxl}{
+            margin-right: 200px;
+        }
+        @media #{$xxl,$xl,$lg}{
+            margin-right: 0px;
+        }
+        @media #{$md,$xs}{
+            margin-right: 0px;
+            padding: 40px;
+        }
+    }
+    &-title {
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 1.3;
+        text-transform: capitalize;
+        color: var(--it-common-white);
+        padding-left: 88px;
+        margin-bottom: 0;
+        @media #{$xl}{
+            font-size: 25px;
+        }
+        @media #{$md}{
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+        @media #{$xs}{
+            font-size: 30px;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+    }
+
+    &-shape{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        & img{
+            height: 100%;
+        }
+    }
+}

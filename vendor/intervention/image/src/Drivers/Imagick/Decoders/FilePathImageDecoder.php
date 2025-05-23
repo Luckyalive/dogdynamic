@@ -8,11 +8,15 @@ use Imagick;
 use ImagickException;
 use Intervention\Image\Exceptions\DecoderException;
 use Intervention\Image\Interfaces\ColorInterface;
-use Intervention\Image\Interfaces\DecoderInterface;
 use Intervention\Image\Interfaces\ImageInterface;
 
-class FilePathImageDecoder extends ImagickImageDecoder implements DecoderInterface
+class FilePathImageDecoder extends NativeObjectDecoder
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @see DecoderInterface::decode()
+     */
     public function decode(mixed $input): ImageInterface|ColorInterface
     {
         if (!$this->isFile($input)) {
@@ -32,8 +36,10 @@ class FilePathImageDecoder extends ImagickImageDecoder implements DecoderInterfa
         // set file path on origin
         $image->origin()->setFilePath($input);
 
-        // extract exif data
-        $image->setExif($this->extractExifData($input));
+        // extract exif data for the appropriate formats
+        if (in_array($imagick->getImageFormat(), ['JPEG', 'TIFF', 'TIF'])) {
+            $image->setExif($this->extractExifData($input));
+        }
 
         return $image;
     }

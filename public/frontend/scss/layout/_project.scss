@@ -1,0 +1,126 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  19. Project area start
+/*----------------------------------------*/
+
+.it-project {
+    &-arrow-box {
+        margin-top: 40px;
+
+        & button {
+            color: var(--it-common-white);
+            width: 62px;
+            height: 62px;
+            line-height: 62px;
+            display: inline-block;
+            border-radius: 50%;
+            background-color: var(--it-theme-1);
+            margin-left: 36px;
+            transition: .3s;
+            @media #{$lg}{
+                margin-left: 0;
+            }
+
+            @media #{$xs} {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+
+            &:hover {
+                color: var(--it-common-black);
+                background-color: var(--it-theme-2);
+            }
+        }
+
+        &.it-testi-3-arrow {
+            position: absolute;
+            top: 35%;
+            transform: translateY(-35%);
+
+            & button {
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    &-active {
+        margin-right: -400px;
+
+        @media #{$xs} {
+            margin-right: 0;
+        }
+    }
+
+    &-thumb {
+        & img {
+            border-radius: 10px;
+            width: 100%;
+        }
+    }
+
+    &-item {
+        &:hover {
+            & .it-project-dsc-box {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &-dsc {
+        &-box {
+            background: var(--it-common-white);
+            padding: 11px 20px;
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(50px);
+            transition: .3s;
+        }
+
+        &-name {
+            margin-bottom: 5px;
+
+            & a {
+                font-size: 24px;
+                transition: .3s;
+
+                &:hover {
+                    color: var(--it-theme-1);
+                }
+            }
+        }
+
+        &-subname {
+            color: var(--it-theme-1);
+        }
+
+        &-btn {
+            & a {
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+                line-height: 39px;
+                rotate: -45deg;
+                text-align: center;
+                display: inline-block;
+                color: var(--it-common-white);
+                background-color: var(--it-theme-1);
+                border-radius: 50%;
+                transition: .3s;
+
+                &:hover {
+                    color: var(--it-common-black);
+                    background-color: var(--it-theme-2);
+                }
+            }
+        }
+    }
+}

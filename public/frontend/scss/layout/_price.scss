@@ -1,0 +1,105 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  16. Price area start
+/*----------------------------------------*/
+
+.it-price {
+
+    &-area{
+        &.it-inner-price{
+            padding-bottom: 370px;
+        }
+    }
+    &-item {
+        padding: 70px 12px;
+        background-color: var(--it-common-white);
+        box-shadow: 0 0 50px 0 rgba(2, 22, 9, 0.12);
+        border-radius: 10px;
+        margin-bottom: 30px;
+
+        &.active {
+            background-color: var(--it-theme-1);
+
+            & .it-price-content {
+                & b {
+                    color: var(--it-common-white);
+
+                    & span {
+                        color: var(--it-theme-2);
+                    }
+                }
+            }
+
+            & .it-price-categories {
+                &-title {
+                    color: var(--it-common-white);
+                }
+            }
+
+            & .it-price-list {
+                & ul {
+                    & li {
+                        color: var(--it-common-white);
+
+                        & i {
+                            color: var(--it-common-white);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    &-title {
+        font-size: 30px;
+        color: var(--it-theme-2);
+        @media #{$xl} {
+            font-size: 26px;
+        }
+        @media #{$md} {
+            font-size: 24px;
+        }
+    }
+
+    &-content {
+        & b {
+            font-size: 24px;
+            color: var(--it-common-black);
+            font-family: var(--it-ff-heading);
+
+            & span {
+                font-size: 14px;
+                color: var(--it-theme-1);
+                font-weight: normal;
+            }
+        }
+    }
+
+    &-categories-title {
+        font-size: 18px;
+    }
+
+    &-list {
+        padding: 0 40px;
+        & ul {
+            & li {
+                list-style: none;
+                position: relative;
+                font-size: 18px;
+                padding-left: 30px;
+                margin-bottom: 10px;
+
+                & i {
+                    position: absolute;
+                    top: 4px;
+                    left: 0;
+                    font-size: 18px;
+                    color: var(--it-theme-1);
+                }
+            }
+        }
+    }
+
+}

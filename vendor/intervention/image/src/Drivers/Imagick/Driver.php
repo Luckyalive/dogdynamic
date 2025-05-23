@@ -8,14 +8,17 @@ use Imagick;
 use ImagickPixel;
 use Intervention\Image\Drivers\AbstractDriver;
 use Intervention\Image\Exceptions\DriverException;
+use Intervention\Image\Exceptions\NotSupportedException;
 use Intervention\Image\Exceptions\RuntimeException;
+use Intervention\Image\Format;
+use Intervention\Image\FileExtension;
 use Intervention\Image\Image;
-use Intervention\Image\Interfaces\ColorInterface;
 use Intervention\Image\Interfaces\ColorProcessorInterface;
 use Intervention\Image\Interfaces\ColorspaceInterface;
 use Intervention\Image\Interfaces\DriverInterface;
 use Intervention\Image\Interfaces\FontProcessorInterface;
 use Intervention\Image\Interfaces\ImageInterface;
+use Intervention\Image\MediaType;
 
 class Driver extends AbstractDriver
 {
@@ -67,6 +70,7 @@ class Driver extends AbstractDriver
     /**
      * {@inheritdoc}
      *
+     * @throws RuntimeException
      * @see DriverInterface::createAnimation()
      */
     public function createAnimation(callable $init): ImageInterface
@@ -80,12 +84,13 @@ class Driver extends AbstractDriver
                 protected DriverInterface $driver,
                 public Imagick $imagick
             ) {
+                //
             }
 
             /**
              * @throws RuntimeException
              */
-            public function add($source, float $delay = 1): self
+            public function add(mixed $source, float $delay = 1): self
             {
                 $native = $this->driver->handleInput($source)->core()->native();
                 $native->setImageDelay(intval(round($delay * 100)));
@@ -115,16 +120,6 @@ class Driver extends AbstractDriver
     /**
      * {@inheritdoc}
      *
-     * @see DriverInterface::handleInput()
-     */
-    public function handleInput(mixed $input, array $decoders = []): ImageInterface|ColorInterface
-    {
-        return (new InputHandler($this->specializeMultiple($decoders)))->handle($input);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
      * @see DriverInterface::colorProcessor()
      */
     public function colorProcessor(ColorspaceInterface $colorspace): ColorProcessorInterface
@@ -140,5 +135,40 @@ class Driver extends AbstractDriver
     public function fontProcessor(): FontProcessorInterface
     {
         return new FontProcessor();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see DriverInterface::supports()
+     */
+    public function supports(string|Format|FileExtension|MediaType $identifier): bool
+    {
+        try {
+            $format = Format::create($identifier);
+        } catch (NotSupportedException) {
+            return false;
+        }
+
+        return count(Imagick::queryFormats($format->name)) >= 1;
+    }
+
+    /**
+     * Return version of ImageMagick library
+     *
+     * @throws DriverException
+     * @return string
+     */
+    public static function version(): string
+    {
+        $pattern = '/^ImageMagick (?P<version>(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)' .
+            '(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?' .
+            '(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)/';
+
+        if (preg_match($pattern, Imagick::getVersion()['versionString'], $matches) !== 1) {
+            throw new DriverException('Unable to read ImageMagick version number.');
+        }
+
+        return $matches['version'];
     }
 }

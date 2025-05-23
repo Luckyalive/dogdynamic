@@ -27,8 +27,8 @@
             <label for="service">Service</label>
             <select class="form-control" name="service" required="" {{old('service')}}>
                 <option value="">Select Service</option>
-                @foreach(getServiceList() as $service)
-                    <option value="{{$service}}" @if(old('service') == $service) selected @endif>{{$service}}</option>
+                @foreach(getServices() as $serviceList)
+                    <option value="{{$serviceList}}" @if(old('service') == $serviceList) selected @endif>{{$serviceList}}</option>
                 @endforeach
 
             </select>

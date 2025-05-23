@@ -1,184 +1,145 @@
-<header class="main-header header-style-two">
-    
-    <!-- Header Top -->
-    <div class="header-top">
-        <div class="auto-container">
-            <div class="inner-container clearfix">
-                
-                <!--Top Left-->
-                <div class="top-left">
-                    <ul class="links clearfix">
-                        @if(getWebsiteData()['primary_phone'])<li><a href="tel:+91{{getWebsiteData()['primary_phone']}}">+91 {{getWebsiteData()['primary_phone']}}</a></li>@endif
-                        @if(getWebsiteData()['primary_mail']) <li><a href="#"><span class="icon flaticon-note-1"></span>{{getWebsiteData()['primary_mail']}}</a></li>@endif
-                    
-                    </ul>
-                </div>
-                
-                <!--Top Right-->
-                <div class="top-right clearfix">
-                    <!--social-icon-->
-                    <div class="social-icon">
-                        <ul class="clearfix">
+<header>
+      <!-- header-area-start -->
+      <div id="header-sticky" class="it-header-area z-index-5">
+         <div class="it-header-top black-bg it-header-space-lr" 
+         data-background="{{asset('frontend/img')}}/header/header-top-bg.png">
+         
 
-                            @if(getSocialMedia()['facebook'])<li><a target="_blank"
-                                    href="{{getSocialMedia()['facebook']}}"><i class="fa fa-facebook-f"></i></a></li>
-                            @endif
-                            @if(getSocialMedia()['instagram'])<li><a target="_blank"
-                                    href="{{getSocialMedia()['instagram']}}"><i class="fa fa-instagram"></i></a></li>
-                            @endif
-                            @if(getSocialMedia()['twitter'])<li><a target="_blank"
-                                    href="{{getSocialMedia()['twitter']}}"><i class="fa fa-twitter"></i></a></li>@endif
-                            @if(getSocialMedia()['youtube'])<li><a target="_blank"
-                                    href="{{getSocialMedia()['youtube']}}"><i class="fa fa-youtube"></i></a></li>@endif
-                            @if(getSocialMedia()['vimeo'])<li><a target="_blank" href="{{getSocialMedia()['vimeo']}}"><i
-                                        class="fa fa-vimeo"></i></a></li>@endif
-                            @if(getSocialMedia()['linkedin'])<li><a target="_blank"
-                                    href="{{getSocialMedia()['linkedin']}}"><i class="fa fa-linkedin"></i></a></li>
-                            @endif
-                            @if(getSocialMedia()['pinterest'])<li><a target="_blank"
-                                    href="{{getSocialMedia()['pinterest']}}"><i class="fa fa-pinterest"></i></a></li>
-                            @endif
-                            @if(getSocialMedia()['skype'])<li><a target="_blank" href="{{getSocialMedia()['skype']}}"><i
-                                        class="fa fa-skype"></i></a></li>@endif
+				
 
+
+         <div class="container-fluid p-0">
+               <div class="row g-0 align-items-center">
+                  <div class="col-xl-8 col-lg-6 col-md-6 col-7">
+                     <div class="it-header-top-info">
+                        <ul>
+                           <li class="d-none d-xl-inline-block">
+                              <a href="tel:{{getWebsiteData()['primary_mail']}}">
+                                 <i class="flaticon-phone-call"></i>
+                                 {{getWebsiteData()['primary_phone']}}
+                              </a>  
+                           </li>
+                           <li>
+                              <a href="mailto:{{getWebsiteData()['primary_mail']}}">
+                                 <i class="flaticon-mail"></i>
+                                 {{getWebsiteData()['primary_mail']}}
+                              </a>
+                           </li>
+                           <li class="d-none d-xl-inline-block">
+                              <a target="_blank" href="https://maps.app.goo.gl/Pnq3CbC39oKuBDMj6">
+                                 <i class="flaticon-location"></i>
+                                 {{getWebsiteData()['address']}}
+                              </a>
+                           </li>
                         </ul>
-                    </div>
-                </div>
-                
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-6 col-md-6 col-5">
+                     <div class="it-header-top-right-wrap d-flex justify-content-end">
+                        
+                        <div class="it-header-top-right d-inline-flex">
+                          
+                        
+                           <div class="it-header-top-social">
+                              
+                        
+                        @if(isset(getSocialMedia()['facebook']))
+                           <a href="{{getSocialMedia()['facebook']}}"><i class="fa-brands fa-facebook"></i></a>
+                        @endif
+                        
+                        @if(isset(getSocialMedia()['twitter']))   
+                        <a href="{{getSocialMedia()['twitter']}}"><i class="fa-brands flaticon-twitter-1"></i></a>
+                        @endif
+   
+                        @if(isset(getSocialMedia()['instagram']))   
+                        <a href="{{getSocialMedia()['instagram']}}"><i class="fa-brands fa-instagram"></i></a>
+                         @endif
+   
+                        
+                        @if(isset(getSocialMedia()['linkedin']))   
+                        <a href="{{getSocialMedia()['linkedin']}}"><i class="fa-brands fa-linkedin"></i></a>
+                        @endif
+   
+                        
+                        @if(isset(getSocialMedia()['youtube']))   
+                        <a href="{{getSocialMedia()['youtube']}}"><i class="fa-brands fa-youtube"></i></a>
+                        @endif
+
+                        
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
+         </div>
+         <div class="it-header-3-wrap p-relative">
+            <div class="it-main-logo">
+               
+               @if(isset(getWebsiteData()['main_logo']))
+                  <a href="{{route('index')}}">
+                           <img class="d-lg-block blur-up lazyloaded"
+                           src="{{asset('web/media/sm')}}/{{ getWebsiteData()['main_logo'] }}" alt="">
+                  </a>
+               @endif
             
-        </div>
-    </div>
-    <!-- Header Top End -->
-    
-    <!-- Main Box -->
-    <div class="main-box">
-        <div class="auto-container">
-            <div class="outer-container clearfix">
-                <!--Logo Box-->
-                <div class="logo-box"><div class="logo"><a href="{{route('index')}}">
-                        <img src="{{asset('web/media/xs')}}/{{ isset(getWebsiteData()['main_logo']) ? getWebsiteData()['main_logo'] : null}}" width="260" alt=""></a></div>
-                </div>
-                
-                <!--Nav Outer-->
-                <div class="nav-outer clearfix">
-                
-                    <nav class="main-menu">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-
-                        <div class="navbar-collapse collapse clearfix">
-                            <ul class="navigation clearfix">
-                                <li class="home"><a href="{{route('index')}}">Home</a></li>
-                                <li class="about"><a href="{{route('about')}}">About Us</a></li>
-
-                                <li class="dropdown service"><a href="{{route('services')}}">Services</a>
-                                    <ul>
-                                        <li class="service"><a href="{{route('services')}}">All Services</a></li>
-
-                                        @foreach(getServices() as $service)
-                                        <li><a href="{{route('services')}}/{{$service->slug}}">{{$service->name}}</a>
-                                        </li>
-                                        @endforeach
-
-                                    </ul>
-                                </li>
+               <div class="it-header-bar-wrap d-lg-none">
+                  <button class="it-header-bar it-menu-bar"><i class="fa-sharp fa-regular fa-bars-staggered"></i>
+                  </button>
+               </div>
+               
+            </div>
+            <div class="it-header-pl">
+               <div class="it-header-bottom it-header-space-lr it-header-mob-space">
+                  <div class="container-fluid">
+                     <div class="row align-items-center">
+                        <div class="col-xxl-12 col-xl-12 d-none d-lg-block">
+                           <div class="it-main-menu">
+                              <nav class="it-menu-content">
+                                 <ul>
+                                    <li><a href="{{route('index')}}">Home</a></li>
+                                    <li><a href="{{route('about')}}">About Us</a></li>
+                                    
+                                    <li class="has-dropdown">
+                                       <a href="{{route('products')}}">Products</a>
+                                       <!-- <ul class="it-submenu submenu"> -->
+                                    </li>
 
 
-                                <li class="project"><a href="{{route('projects')}}">Project Executed</a></li>
-
-                                <li class="blog"><a href="{{route('blog')}}">Blog</a></li>
-                                <li class="contact"><a href="{{route('contact')}}">Contact us</a></li>
-                                <li><button class="theme-btn btn-style3"  data-toggle="modal" data-target="#inquiryModal">inquiry now</button></li>
-
-                            </ul>
-                        </div>
-                    </nav>
+                                    <li class="has-dropdown">
+                                       <a href="{{route('services')}}">services</a>
+                                       <ul class="it-submenu submenu">
 
 
-                </div>
-                <!--Nav Outer End-->
-                
-            </div>    
-        </div>
-    </div>
+                                       <li><a href="#">Chapati Maker</a></li>
+                                       </ul>
+                                    </li>
 
-    <!--Sticky Header-->
-    <div class="sticky-header">
-        <div class="auto-container">
-            <div class="sticky-inner-container clearfix">
-                <!--Logo-->
-                <div class="logo pull-left">
-                    <a href="{{route('index')}}" class="img-responsive"><img
-                            src="{{asset('web/media/xs')}}/{{ isset(getWebsiteData()['light_logo']) ? getWebsiteData()['light_logo'] : null}}"
-                            width="160" title=""></a>
-                </div>
-                
-                <!--Right Col-->
-                <div class="right-col pull-right">
-                    <!-- Main Menu -->
-                    <nav class="main-menu">
-                        <div class="navbar-header">
-                            <!-- Toggle Button -->    	
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
+                                    
+
+                                    <li><a href="{{route('gallery')}}">Gallery</a></li>
+                                   
+                                    <li>
+                                       <a href="{{route('blog')}}">Blog</a>
+                                    </li>
+
+                                    <li><a href="{{route('contact')}}">Contact us</a></li>
+                                    
+                                    <li> 
+                                       <button data-bs-toggle="modal" data-bs-target="#contact-form2" class="btn-inquire-now2">Inquire Now</button>   
+                                    </li>
+                                 </ul>
+                              </nav>
+                           </div>
+                           
                         </div>
                         
-                        <div class="navbar-collapse collapse clearfix">
-                            
-                        <ul class="navigation clearfix">
-                                <li class="home" class="dropdown"><a href="{{route('index')}}">Home</a></li>
-
-                                <li class="about"><a href="{{route('about')}}">About Us</a></li>
-                                <li class="dropdown service"><a href="{{route('services')}}">Services</a>
-                                    <ul>
-                                        <li class="service"><a href="{{route('services')}}">All Services</a></li>
-
-                                        @foreach(getServices() as $service)
-                                        <li class="service"><a
-                                                href="{{route('services')}}/{{$service->slug}}">{{$service->name}}</a>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                                <li class="project"><a href="{{route('projects')}}">Project Executed</a></li>
-                                <li class="blog"><a href="{{route('blog')}}">Blog</a></li>
-                                <li class="contact"><a href="{{route('contact')}}">Contact us</a></li>
-                                <li><button class="theme-btn btn-style3"  data-toggle="modal" data-target="#inquiryModal">inquiry now</button></li>
-                            </ul>
-                            
-                        </div>
-                    </nav>
-                    <!-- Main Menu End-->
-                    
-                    <!--Outer Box-->
-                    <div class="outer-box">
-                        <!--Search Box-->
-                        <div class="search-box-outer">
-                            <div class="dropdown">
-                                 <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu4">
-                                    <li class="panel-outer">
-                                    <button class="theme-btn btn-style3"  data-toggle="modal" data-target="#inquiryModal">inquiry now</button>
-                                       
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
-    <!--End Sticky Header-->
+         </div>
+      </div>
+      <!-- header-area-end -->
 
 </header>
