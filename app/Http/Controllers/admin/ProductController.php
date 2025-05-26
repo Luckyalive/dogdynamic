@@ -189,12 +189,12 @@ class ProductController extends Controller
         
         $product = Product::find($id);
 
-        // if($request->file('image')){
-        //     $image_name = uploadImageThumb($request);
-        // }
-        // else{
-        //     $image_name = $product->image;
-        // }
+        if($request->file('image')){
+            $image_name = uploadImageThumb($request);
+        }
+        else{
+            $image_name = $product->image;
+        }
 
 
         if ($product) {
@@ -203,7 +203,7 @@ class ProductController extends Controller
                 'name' => $request->name, 
                 'category_id' => $request->category_id, 
                 'description' => $request->description, 
-                // 'image' => $image_name, 
+                'image' => $image_name, 
                 'image_title' => $request->image_title, 
                 'page_title' => $request->page_title, 
                 'price' => $request->price, 

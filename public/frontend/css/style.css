@@ -59,9 +59,9 @@
   --it-heading-primary: #021609;
   --it-grey-1: #F3FBF5;
   --it-text-body: #5A5A5A;
-  --it-theme-1: linear-gradient(113deg, rgb(218 167 92) 0%, rgba(233, 64, 25, 1) 43%);
+  --it-theme-1: linear-gradient(113deg, rgb(10, 109, 86) 0%, rgb(8, 87, 66) 43%);
+  --it-theme-2: linear-gradient(113deg, rgb(9, 62, 50) 0%, rgb(16, 137, 104) 43%);
   
-  --it-theme-2: linear-gradient(113deg, rgb(218 167 92) 0%, rgba(233, 64, 25, 1) 43%);
   --it-border-1: #3a3a3a;
 }
 

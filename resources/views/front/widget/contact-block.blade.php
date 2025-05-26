@@ -44,14 +44,10 @@
                            <br>
                            <p><strong>Reg Address:</strong></p>
                            <a href="#">
-                              <i class="flaticon-location"></i> D/1 – 304 Wisteria Heights, Opp. Bharat Petrol Pump. Near Somatalav, Vadodara. 390025
+                              <i class="flaticon-location"></i> {{getWebsiteData()['address']}}
                            </a>
                            <br>
 
-
-                           <a href="#">
-                              <i class="flaticon-location"></i>  SF-13, Samruddhi Safalya, Opo. Yamuna Mill, Pratap Nagar - Soma Talav Road, Vadodara. 390017
-                           </a>
                            <br>
 
 

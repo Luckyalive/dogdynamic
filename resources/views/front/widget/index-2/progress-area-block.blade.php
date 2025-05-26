@@ -1,8 +1,6 @@
       <!-- progress area start  -->
       <div class="it-progress-area p-relative pt-115 pb-50">
-         <div class="it-progress-shape d-none d-xl-block">
-            <img src="frontend/img/about/about-2-shape-3.png" alt="">
-         </div>
+         
          <div class="container">
             <div class="row">
                <div class="col-xl-6 col-lg-6">

@@ -123,6 +123,15 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="validationCustom02" class="col-form-label"><span>*</span>
+                                    Image</label><br>
+
+                                    <input class="" id="validationCustom2" type="file" accept="image/*"  name="image" onchange="previewImage(event)">
+                                    <img id="image-preview" height="100" src="{{asset('web/media/sm')}}/{{ isset($product->image) ? $product->image : null}}"/>
+
+                            </div>
+
                            
                         </div>
                     </div>

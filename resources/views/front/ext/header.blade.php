@@ -4,10 +4,6 @@
          <div class="it-header-top black-bg it-header-space-lr" 
          data-background="{{asset('frontend/img')}}/header/header-top-bg.png">
          
-
-				
-
-
          <div class="container-fluid p-0">
                <div class="row g-0 align-items-center">
                   <div class="col-xl-8 col-lg-6 col-md-6 col-7">
@@ -94,7 +90,7 @@
                   <div class="container-fluid">
                      <div class="row align-items-center">
                         <div class="col-xxl-12 col-xl-12 d-none d-lg-block">
-                           <div class="it-main-menu">
+                           <div class="it-main-menu" >
                               <nav class="it-menu-content">
                                  <ul>
                                     <li><a href="{{route('index')}}">Home</a></li>
@@ -106,18 +102,15 @@
                                     </li>
 
 
-                                    <li class="has-dropdown">
+                                    {{-- <li class="has-dropdown">
                                        <a href="{{route('services')}}">services</a>
                                        <ul class="it-submenu submenu">
 
-
-                                       <li><a href="#">Chapati Maker</a></li>
-                                       </ul>
-                                    </li>
+                                    </li> --}}
 
                                     
 
-                                    <li><a href="{{route('gallery')}}">Gallery</a></li>
+                                    {{-- <li><a href="{{route('gallery')}}">Gallery</a></li> --}}
                                    
                                     <li>
                                        <a href="{{route('blog')}}">Blog</a>
@@ -125,10 +118,11 @@
 
                                     <li><a href="{{route('contact')}}">Contact us</a></li>
                                     
-                                    <li> 
+                                    <li class='ml-4'> 
                                        <button data-bs-toggle="modal" data-bs-target="#contact-form2" class="btn-inquire-now2">Inquire Now</button>   
                                     </li>
                                  </ul>
+                              
                               </nav>
                            </div>
                            

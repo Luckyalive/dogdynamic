@@ -4,6 +4,7 @@
             
             <div class="swiper-container it-slider-3-active">
                <div class="swiper-wrapper">
+                  
                   @foreach(getSliders() as $slider)
                   <div class="swiper-slide">
                      <div class="it-slider-3-wrapper it-slider-3-overlay it-slider-3-height p-relative z-index">
@@ -26,7 +27,7 @@
                                           <!-- <p>Our services cover the entire lifecycle of Solar systems. Chose wisely. Go Solar. Save Nature</p> -->
                                        </div>
                                     </div>
-                                    <div class="it-slider-3-button d-flex align-items-center">
+                                    <div class="it-slider-3 d-flex align-items-center">
                                        <a href="{{route('about')}}" class="it-btn-green white-bg mr-30">Discover More</a>
                                     </div>
                                  </div>

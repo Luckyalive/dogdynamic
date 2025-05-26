@@ -3,9 +3,7 @@
          <div class="it-about-2-shape-1 d-none d-xl-block">
             <img src="frontend/img/about/about-2-shape-1.jpg" alt="">
          </div>
-         <div class="it-about-2-shape-2 d-none d-xl-block">
-            <img src="frontend/img/about/about-2-shape-3.png" alt="">
-         </div>
+         
          <div class="container">
             <div class="row">
                <div class="col-xl-7 col-lg-6">

@@ -2,8 +2,8 @@
 <section class="p-0">
     <div class="full-banner banner-layout-3 parallax text-center text-capitalize p-center p-0">
         
-    <div class="it-footer-2-area bg-overlay p-relative" data-background="{{asset('frontend/img')}}/website/about-solar.jpg"
-   style="background-image: url(&quot;{{asset('frontend/img')}}/website/about-solar.jpg&quot;);background-size: 100% 100%;background-repeat: no-repeat;
+    <div class="it-footer-2-area bg-overlay p-relative" data-background="{{asset('frontend/img')}}/website/header-banner.webp"
+   style="background-image: url(&quot;{{asset('frontend/img')}}/website/header-banner.webp&quot;);background-size: 100% 100%;background-repeat: no-repeat;
    padding: 48px 0px;
    "
    >   

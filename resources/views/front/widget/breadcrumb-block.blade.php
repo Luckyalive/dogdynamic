@@ -2,7 +2,7 @@
     <div class="it-breadcrumb-area fix p-relative" 
       
       @if(!isset($image))
-         data-background="{{asset('frontend/img/website')}}/about-solar.jpg"
+         data-background="{{asset('frontend/img/website')}}/header-banner.webp"
       @else
          data-background="{{asset('web/media/lg')}}/{{$image}}"
       @endif      

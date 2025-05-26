@@ -1,8 +1,8 @@
 <footer>
 
 <!-- footer-area-start -->
-<div class="it-footer-2-area p-relative" data-background="{{asset('frontend/img')}}/website/about-solar.jpg"
-   style="background-image: url(&quot;{{asset('frontend/img')}}/website/about-solar.jpg&quot;);background-size: 100% 100%;background-repeat: no-repeat;"
+<div class="it-footer-2-area p-relative" data-background="{{asset('frontend/img')}}/website/pump/pump5.jpg"
+   style="background-image: url(&quot;{{asset('frontend/img')}}/website/header-banner.webp&quot;);background-size: 100% 100%;background-repeat: no-repeat;"
    >
 
    <div class="it-footer-2-bottom pt-110 pb-60">
@@ -98,17 +98,12 @@
                   <p>ujvalprojects@gmail.com</p>
                   <br>
                   
-                  <p> <i class="flaticon-location"></i> <strong>Reg Address:</strong></p>
+                  <p> <i class="flaticon-location"></i> <strong>Office:</strong></p>
                            <p>
-                             D/1 – 304 Wisteria Heights, Opp. Bharat Petrol Pump. Near Somatalav, Vadodara. 390025
+                              {{getWebsiteData()['address']}}
                            </p>
                            <br>
 
-                  <p> <i class="flaticon-location"></i> <strong>Office:</strong></p>
-                     <p>
-                         SF-13, Samruddhi Safalya, Opo. Yamuna Mill, Pratap Nagar - Soma Talav Road, Vadodara. 390017
-                     </p>
-                     <br>
 
                
                </div>

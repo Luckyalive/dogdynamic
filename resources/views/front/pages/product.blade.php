@@ -10,32 +10,53 @@
 
       <!-- Product area start  -->
       <div class="it-product-area p-relative pt-100 pb-90">
+
+
          <div class="container">
             <div class="row">
-            @foreach($products as $productArr)
-               <div class="col-xl-4 col-lg-6 col-md-6 mb-30">
-                  <div class="it-product-item">
-                     <div class="it-product-thumb mb-40 grey-bg p-relative">
-                     <img src="{{ asset('web/media/md') }}/{{ optional(getProductImage($productArr->id))->image ?? 'default.jpg' }}" alt="">
+               
+               <div class="col-xl-3 col-lg-3 mb-50">
+                  <div class="it-sv-details__wrapp">
+                     <div class="sidebar-wrapp mb-60 p-relative">
+                   
+                        <div class="sidebar-widget mb-55">
+                           <h4 class="sidebar-widget-title mb-40">Our Products</h4>
+                           <div class="sidebar-widget-list">
+                              @foreach(getCategories() as $categoryArr)
+                                 <a class='{{$categoryArr->slug}}@if($categoryArr->slug == $category->slug) active @endif' href="{{route('category',$categoryArr->slug)}}">{{$categoryArr->name}}<i class="fa-regular fa-angle-right"></i></a>
+                              @endforeach
 
-                       <div class="it-product-icon">
-                           <a href="#"><i class="fa-solid fa-heart"></i></a>
+                           </div>
                         </div>
                      </div>
-                     <div class="it-product-content d-flex align-items-center justify-content-between">
+
+                  </div>
+               </div>
+               
+               <div class="col-xl-9 col-lg-9">
+               <div class="row">
+                  @foreach($products as $productArr)
+               
+               <div class="col-xl-6 col-lg-6 col-md-6">
+                           <div class="it-service-item">
+                              <div class="img-container">
+                                 <img src="{{ asset('web/media/md') }}/{{ optional(getProductImage($productArr->id))->image ?? 'default.jpg' }}" alt="">
+                              </div>
+
+                     <h3 class="it-section-title-sm">{{$productArr->name}}</h3>
                      
-                        <div class="it-product-action">
-                           <a href="{{route('productDetails', $productArr->slug)}}">{{$productArr->name}}<i class="fa-solid fa-plus"></i></a>  
-                        </div>
-                     </div>
+                    <p>{!! html_entity_decode($productArr->description) !!}</p>
                   </div>
                </div>
                                      
                @endforeach
+
+            </div>
+
             </div>
          </div>
+         </div>
       </div>
-      <!-- Product area end  -->
 
 
    </main>

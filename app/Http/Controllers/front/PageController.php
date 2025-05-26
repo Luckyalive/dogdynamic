@@ -103,24 +103,38 @@ class PageController extends Controller
         $slider = Slider::all(); 
         $pagetitle = 'Cotact Us';
         $name = 'Cotact Us';
-        return view('front.pages.contact', compact('slider', 'pagetitle','name'));
-
-        
+        return view('front.pages.contact', compact('slider', 'pagetitle','name'));        
     }
     
+    public function category($slug){
     
-    public function products(){
+        // return $slug;
+        $pagetitle = 'Our Products';
+        $name = 'Our Products';
+    
+        $category = Category::where('slug', $slug)->first(); 
+        $categories = Category::get(); 
         
+        $products = $category->products;
+        // return $products;
+        return view('front.pages.product', compact('products', 'categories', 'category', 'pagetitle','name'));
+    }
+
+
+    public function products(){
         $pagetitle = 'Our Products';
         $name = 'Our Products';
         Session::forget('cartData');
+        
+        $category = Category::where('slug', 'pumps')->first();
+
         $categories = Category::where('status', 1)                
                     ->whereNotIn('slug', [])
                     ->get(); 
-                    
-        $products = Product::where('status', 1)->get(); 
+
+        $products = $category->products;    
         
-        return view('front.pages.product', compact('products', 'categories', 'pagetitle','name'));
+        return view('front.pages.product', compact('products', 'categories', 'category', 'pagetitle','name'));
     }
 
 

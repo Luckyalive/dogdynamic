@@ -42,9 +42,7 @@
                         </h3>
                      </div>
                      <div class="it-about-dsc mb-35">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                           labore
-                           et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                        <p>We pride ourselves on delivering innovative, high-quality, and customer-focused solutions. As a trusted provider of metallic valves and comprehensive pump services, we cater to major industries such as oil and gas, chemical processing, power generation, water treatment, and manufacturing. Our commitment to excellence is reinforced by our ISO 9001, API 610, and ASME certifications. With a team of experienced professionals, we specialize in pump installation, maintenance, repair, overhaul, upgrades, testing, and commissioning. Our cost-effective service plans aim to maximize productivity, reduce operational costs, and extend pump lifespans, ensuring clients achieve peak efficiency with minimal downtime. From consultancy to post-installation monitoring, TransFluid is your one-stop service provider for all pump-related needs.</p>
                      </div>
                      <div class="it-about-item d-flex mb-10">
                         <div class="it-about-item-icon">

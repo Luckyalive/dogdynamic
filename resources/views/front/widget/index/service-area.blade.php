@@ -5,17 +5,8 @@
          </div>
          <div class="container">
             <div class="row">
-               <div class="col-xl-4 col-lg-6">
-                  <div class="it-service-title-wrap mb-50">
-                     <div class="it-service-title-box mb-35 p-relative">
-                        <span class="it-subtitle subtitle-yellow">Services</span>
-                        <h3 class="it-section-title text-white">What we’re offering to our customers.</h3>
-                     </div>
-                     <div class="it-service-btn">
-                        <a href="{{route('services')}}" class="it-btn-green white-bg">Our Service</a>
-                     </div>
-                  </div>
-               </div>
+               
+
                @foreach(getServices() as $service1)
                   <div class="col-xl-4 col-lg-6 col-md-6">
                      <div class="it-service-item wow itfadeUp" data-wow-duration=".9s" data-wow-delay=".3s">

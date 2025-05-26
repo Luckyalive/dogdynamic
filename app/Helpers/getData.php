@@ -13,6 +13,7 @@ use App\Models\admin\Vendor;
 use App\Models\admin\ProductInquiry;
 use App\Models\admin\CustomCode;
 use App\Models\admin\Blog;
+use App\Models\admin\Industry;
 use App\Models\admin\ProductImage;
 
 
@@ -52,10 +53,18 @@ function getSliders(){
 }
 
 function getClients(){
-    $data = Client::where('status', 1)->get();
+    $data = Client::get();
 
     if ($data) {
         return $data;
+    }
+    return null;
+}
+
+function getIndustries(){
+    $industries = Industry::get();
+    if ($industries) {
+        return $industries;
     }
     return null;
 }
@@ -82,7 +91,7 @@ function getTotalBlogs(){
 
 
 function getServices(){
-    $services = Service::where('status', 1)->get();
+    $services = Service::get();
 
     if ($services) {
         return $services;
