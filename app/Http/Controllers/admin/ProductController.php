@@ -196,6 +196,20 @@ class ProductController extends Controller
             $image_name = $product->image;
         }
 
+        
+
+        if($request->file('images') !== null){
+            foreach ($request->file('images') as $image) {
+                // dd($image);
+                $image_name = uploadImagesThumb($image);
+                $product->images()->create([
+                    'product_id' => $product->id,
+                    'image' => $image_name,
+                    'image_title' => 'null',
+                ]);
+            }   
+    }
+
 
         if ($product) {
             

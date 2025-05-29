@@ -16,9 +16,6 @@
    </div>
    <!-- preloader end  -->
 
-   <div id="magic-cursor">
-      <div id="ball"></div>
-   </div>
 
    <!-- back-to-top-start  -->
    <button class="scroll-top scroll-to-target" data-target="html">

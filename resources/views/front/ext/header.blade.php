@@ -97,16 +97,22 @@
                                     <li><a href="{{route('about')}}">About Us</a></li>
                                     
                                     <li class="has-dropdown">
-                                       <a href="{{route('products')}}">Products</a>
-                                       <!-- <ul class="it-submenu submenu"> -->
-                                    </li>
-
-
-                                    {{-- <li class="has-dropdown">
-                                       <a href="{{route('services')}}">services</a>
+                                       <a href="{{ route('products') }}">Products</a>
                                        <ul class="it-submenu submenu">
-
-                                    </li> --}}
+                                          @foreach(getCategories() as $categoryArr)
+                                             <li>
+                                                <a class="{{ $categoryArr->slug }}{{ isset($category) && $categoryArr->slug == $category->slug ? ' active' : '' }}"
+                                                   href="{{ route('category', $categoryArr->slug) }}">
+                                                   {{ $categoryArr->name }} <i class="fa-regular fa-angle-right"></i>
+                                                </a>
+                                             </li>
+                                          @endforeach
+                                       </ul>
+                                    </li>
+                                    
+                                    <li>
+                                       <a href="{{route('services')}}">services</a>
+                                    </li> 
 
                                     
 

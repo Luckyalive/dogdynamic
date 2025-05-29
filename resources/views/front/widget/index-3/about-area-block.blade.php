@@ -69,9 +69,9 @@
                         </div>
                      </div>
                      <div class="it-about-info d-flex align-items-center">
-                        <div class="it-about-btn mr-25">
+                        <!-- <div class="it-about-btn mr-25">
                            <a href="{{route('about')}}" class="it-btn-green yellow-bg text-white text-light">Read More</a>
-                        </div>
+                        </div> -->
                         <div class="it-about-info-content d-flex align-items-center">
                            <div class="it-about-info__icon mr-10">
                               <i class="flaticon-message"></i>

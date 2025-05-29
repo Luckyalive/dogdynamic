@@ -59,8 +59,8 @@
                   <div class="it-footer-list">
                      <ul>
                         <li><a href="{{route('about')}}">About Us</a></li>
-                        <li><a href="{{route('services')}}">Products & Services</a></li>
-                        <li><a href="{{route('gallery')}}">Gallery</a></li>
+                        <li><a href="{{route('products')}}">Products</a></li>
+                        <!-- <li><a href="{{route('gallery')}}">Gallery</a></li> -->
                         <li><a href="{{route('blog')}}">Blog</a></li>
                         <li><a href="{{route('contact')}}">Contact</a></li>
                      </ul>
@@ -73,9 +73,18 @@
                   <div class="it-footer-list">
                      <ul>
                         
-                        @foreach(getServices() as $service2)
-                              <li><a href="{{route('services')}}/{{$service2->slug}}">{{$service2->title}}</a></li>
+                     <ul class="it-submenu submenu">
+                        @foreach(getCategories() as $categoryArr)
+                           <li>
+                              <a class="{{ $categoryArr->slug }}{{ isset($category) && $categoryArr->slug == $category->slug ? ' active' : '' }}" 
+                                 href="{{ route('category', $categoryArr->slug) }}">
+                                 {{ $categoryArr->name }}
+                                 <i class="fa-regular fa-angle-right"></i>
+                              </a>
+                           </li>
                         @endforeach
+                     </ul> 
+
 
 
                      </ul>
@@ -95,7 +104,8 @@
                   
                   <p>Email:</p>
                   <p>{{getWebsiteData()['primary_mail']}}</p>
-                  <p>ujvalprojects@gmail.com</p>
+                  <p>{{getWebsiteData()['secondary_mail']}}</p>
+
                   <br>
                   
                   <p> <i class="flaticon-location"></i> <strong>Office:</strong></p>

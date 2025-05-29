@@ -71,68 +71,60 @@ class ServiceController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        
-        $request->validate([
-            'name' => 'required|string',
-        ]
-    );
-        
+{
+    $request->validate([
+        'name' => 'required|string',
+    ]);
 
-        $item_no = Service::latest()->first();
-        if($item_no){
-            $item_no =  $item_no->item_no + 1;
-        }else{
-            $item_no = 1;
-        }
+    // Generate item number
+    $lastService = Service::latest()->first();
+    $item_no = $lastService ? $lastService->item_no + 1 : 1;
 
-           
-        if($request->file('image')){
-            $image_name = uploadImageThumb($request);
-        }
-        else{
-            $image_name = $service->image;
-        }
-
-
-        $service = Service::create([
-            'item_no' => $item_no, 
-            'name' => $request->name, 
-            'description' => $request->description, 
-            'image' => $image_name, 
-            'para1' => $request->para1, 
-            'para2' => $request->para2, 
-            'gallery' => $request->gallery,
-            'slug' => $request->slug, 
-            'status' => $request->status
-        ]);
-        
-        $service->seo()->create([
-            'search_index' => $request->search_index, 
-            'search_follow' => $request->search_follow, 
-            'canonical_url' => $request->canonical_url, 
-            'meta_title' => $request->meta_title,
-            'meta_keyword' => $request->meta_keyword, 
-            'meta_description' => $request->meta_description,
-            'seoable_id' => $request->seoable_id, 
-            'seoable_type' => $request->seoable_type
-        ]);
-
-
-        if($request->file('images') !== null){
-            foreach ($request->file('images') as $image) {
-                // dd($image);
-                $image_name = uploadImagesThumb($image);
-                $service->images()->create([
-                    'product_id' => $service->id,
-                    'image' => $image_name,
-                    'image_title' => 'null',
-                ]);
-            }   
+    // Handle main image upload
+    $image_name = null;
+    if ($request->hasFile('image')) {
+        $image_name = uploadImageThumb($request);
     }
 
-        return redirect()->route('service.create')->with('success', 'Service added successfully.');
+    // Create service
+    $service = Service::create([
+        'item_no' => $item_no,
+        'name' => $request->name,
+        'description' => $request->description,
+        'image' => $image_name,
+        'para1' => $request->para1,
+        'para2' => $request->para2,
+        'gallery' => $request->gallery,
+        'slug' => $request->slug,
+        'status' => $request->status,
+    ]);
+
+    // Attach SEO
+    $service->seo()->create([
+        'search_index' => $request->search_index,
+        'search_follow' => $request->search_follow,
+        'canonical_url' => $request->canonical_url,
+        'meta_title' => $request->meta_title,
+        'meta_keyword' => $request->meta_keyword,
+        'meta_description' => $request->meta_description,
+        'seoable_id' => $service->id, // should be the newly created service ID
+        'seoable_type' => Service::class,
+    ]);
+
+    // Upload and attach multiple gallery images
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $galleryImageName = uploadImagesThumb($image);
+            $service->images()->create([
+                'product_id' => $service->id,
+                'image' => $galleryImageName,
+                'image_title' => null,
+            ]);
+        }
     }
+
+    return redirect()->route('service.create')->with('success', 'Service added successfully.');
+}
 
     /**
      * Display the specified resource.

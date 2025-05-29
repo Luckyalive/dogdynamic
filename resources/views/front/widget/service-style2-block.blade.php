@@ -8,27 +8,16 @@
                <div class="col-xl-4 col-lg-6 col-md-6">
                   <div class="it-service-item">
                      
-                     <h3 class="it-section-title-sm">{{$service->title}}</h3>
-                     <p>{{$service->short_description}}</p>
+                     <h3 class="it-section-title-sm">{{$service->name}}</h3>
+                    
                      
                            @if($service->image)
                               <div class="it-service-item-thumb mt-25">
-                                 <img src="{{asset('web/media/sm')}}/{{$service->image}}" alt="">
+                                 <img src="{{asset('web/media/sm')}}/{{$service->image}}" alt="image error">
 
                               </div>
-                              @else
-                                 <div class="it-service-item-thumb mt-25">                                 
-                                    <img src="frontend/img/service/service-1-1.jpg" alt="">
-                                 </div>
                               @endif
-                           
-                        <div class="row">
-                           <div class="col-sm-6 mt-25">
-                              <a href="{{route('services')}}/{{$service->slug}}" class="it-btn-green btn-inquire-now2 sm">Read More</a>
-                           </div>
-
-                              
-                        </div>
+                              <p>{!! html_entity_decode($service->description) !!}</p>
 
                   </div>
                </div>
@@ -37,5 +26,4 @@
         
             </div>
          </div>
-</div>
-      <!-- service area end  -->
+</div><!-- service area end  -->

@@ -127,7 +127,11 @@
                                 <label for="validationCustom02" class="col-form-label"><span>*</span>
                                     Image</label><br>
 
-                                    <input class="" id="validationCustom2" type="file" accept="image/*"  name="image" onchange="previewImage(event)">
+                                    <!-- <input class="" id="validationCustom2" type="file" accept="image/*"  name="image" onchange="previewImage(event)"> -->
+                                   
+                                    <input class="" multiple  type="file" accept="image/*"  
+                                        id="images" name="images[]" onchange="previewImages(event)"  value="{{ old('images[]') }}">
+                                   
                                     <img id="image-preview" height="100" src="{{asset('web/media/sm')}}/{{ isset($product->image) ? $product->image : null}}"/>
 
                             </div>
