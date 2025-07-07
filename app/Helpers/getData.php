@@ -165,10 +165,27 @@ function getCategories(){
     return null;
 }
 
-function getTestimonials(){
-    return Testimonial::where('status', 1)->get();
+// function getTestimonials(){
+//     return Testimonial::where('status', 1)->get();
+// }
+
+function getTestimonials($limit = null){
+    $query = \App\Models\admin\Testimonial::where('status', 1)->orderBy('item_no');
+    
+    if ($limit) {
+        $query->limit($limit);
+    }
+
+    return $query->get();
 }
+
 
 function getTeams(){
     return Team::where('status', 1)->get();
 }   
+
+function getServiceByCategory($category){
+    
+    return Service::where('category', $category)->get();
+}   
+

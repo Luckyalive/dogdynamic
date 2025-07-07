@@ -93,9 +93,6 @@ class PageController extends Controller
         $name = 'Blog';
         $pagetitle = $blog->title;
         return view('front.pages.blog-details', compact('blog', 'blogs', 'pagetitle', 'name'));
-
-
-
     }
 
 

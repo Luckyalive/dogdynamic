@@ -90,6 +90,7 @@ class ServiceController extends Controller
     $service = Service::create([
         'item_no' => $item_no,
         'name' => $request->name,
+        'category' => $request->category,
         'description' => $request->description,
         'image' => $image_name,
         'para1' => $request->para1,

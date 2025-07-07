@@ -120,9 +120,10 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($slug)
     {
-        //
+        $blog = Blog::where('slug', $slug)->where('status', 1)->firstOrFail();
+        return view('front.pages.blog-detail', compact('blog'));
     }
 
     /**

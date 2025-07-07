@@ -328,3 +328,9 @@ margin-top: 0px;
 .brand-slider-wrap{
     display: none;
 }
+
+header .navbar-brand img {
+    max-height: 100px;
+    padding: 6px 0px;
+    margin-top: 11px;
+}

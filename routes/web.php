@@ -18,6 +18,10 @@ use App\Http\Controllers\admin\settings\SocialMediaController;
 use App\Http\Controllers\admin\settings\CustomCodeController;
 use App\Http\Controllers\admin\InquiryController;
 use App\Http\Controllers\admin\BlogController;
+
+use App\Http\Controllers\front\BlogFrontController;
+use App\Http\Controllers\front\GalleryFrontController;
+
 use App\Http\Controllers\admin\LoginController;
 
 
@@ -79,6 +83,7 @@ Route::prefix('/' . $adminName)->group(function () {
     Route::resource('blog', BlogController::class)->middleware('authLogin');
     
     
+    
     Route::resource('settings/website', WebsiteController::class)->middleware('authLogin');
     Route::resource('settings/social-media', SocialMediaController::class)->middleware('authLogin');
     Route::resource('settings/custom-code', CustomCodeController::class)->middleware('authLogin');
@@ -93,7 +98,7 @@ Route::prefix('/' . $adminName)->group(function () {
 
 
 Route::get('/', [PageController::class, 'index'])->name('index');
-Route::get('/about-us', [PageController::class, 'about'])->name('about');
+Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
 Route::get('/service', [PageController::class, 'services'])->name('services');
 Route::get('/project', [PageController::class, 'projects'])->name('projects');
@@ -116,6 +121,9 @@ Route::get('/drip-irrigation', [PageController::class, 'dripIrrigation'])->name(
 Route::get('/solar-system', [PageController::class, 'solarSystem'])->name('solarSystem');
 
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');
+
+
+
 Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
 
 Route::get('/blog/{slug}', [PageController::class, 'blogDetail'])->name('blogDetail');
@@ -130,6 +138,21 @@ Route::get('/product/inquiry', [PageController::class, 'productInquiry'])->name(
 Route::get('/thank-you', [PageController::class, 'thankYou'])->name('thankYou');
 Route::get('/test-mail', [PageController::class, 'testMail'])->name('testMail');
 Route::get('/test-rss', [PageController::class, 'testRss'])->name('testRss');
+
+Route::get('/blogs', [BlogFrontController::class, 'index'])->name('front.blog.index');
+Route::get('/blog/{slug}', [BlogFrontController::class, 'show'])->name('front.blog.show');
+
+Route::get('/gallery', [GalleryFrontController::class, 'index'])->name('gallery');
+
+
+Route::get('/services', [ServiceController::class, 'index']);
+
+use App\Models\admin\Testimonial;
+
+Route::get('/testimonials', function () {
+    $testimonials = Testimonial::where('status', 1)->orderBy('item_no')->get();
+    return view('frontend.testimonials', compact('testimonials'));
+});
 
 
 

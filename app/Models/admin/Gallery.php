@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Gallery extends Model
 {
     use HasFactory;
-    protected $fillable = ['item_no', 'name', 'image', 'gallery', 'slug', 'status'];
+    protected $fillable = ['item_no', 'items','name', 'image', 'gallery', 'slug', 'status'];
         
     public function seo()
     {

@@ -64,6 +64,27 @@
                     </div>
                     <div class="card-body">
                         <div class="digital-add needs-validation">
+
+                            
+
+                            
+                            <div class="form-group">
+                                <label for="validationCustom01" class="col-form-label pt-0 slug-generator"><span>*</span>
+                                    Service Name</label>
+
+                                    <select name="category" id="">
+                                        @foreach(getServiceCategories() as $serviceCategory)
+                                           <option value="{{$serviceCategory}}">{{$serviceCategory}}</option>
+                                        @endforeach
+
+                                        </select>
+
+                                <input class="form-control slug-generator" name="name" id="validationCustom01" 
+                                    value="{{old('name')}}" type="text">
+                            </div>
+                            
+
+
                             <div class="form-group">
                                 <label for="validationCustom01" class="col-form-label pt-0 slug-generator"><span>*</span>
                                     Service Name</label>
