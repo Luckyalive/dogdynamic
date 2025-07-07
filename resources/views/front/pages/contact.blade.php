@@ -101,7 +101,7 @@
                             const encodedText = encodeURIComponent(text);
 
                             // Replace with your WhatsApp number
-                            const whatsappNumber = "{{getWebsiteData()['primary_phone']}}"; // use country code (e.g., +91 for India)
+                            const whatsappNumber = "9316873400"; // use country code (e.g., +91 for India)
 
                             window.open(`https://wa.me/${whatsappNumber}?text=${encodedText}`, '_blank');
                             }
