@@ -22,6 +22,8 @@ use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\front\BlogFrontController;
 use App\Http\Controllers\front\GalleryFrontController;
 
+use App\Http\Controllers\admin\YoutubeLinkController;
+// use App\Http\Controllers\Front\YoutubeLinkController;
 use App\Http\Controllers\admin\LoginController;
 
 
@@ -93,6 +95,18 @@ Route::prefix('/' . $adminName)->group(function () {
 
     Route::post('/store-product-inquiry', [PageController::class, 'storeProductInquiry'])->name('storeProductInquiry');
 
+
+    
+Route::get('/youtube-link', [YoutubeLinkController::class, 'index'])->name('admin.youtube.index');
+Route::get('/youtube-link/create', [YoutubeLinkController::class, 'create'])->name('admin.youtube.create');
+Route::post('/youtube-link', [YoutubeLinkController::class, 'store'])->name('admin.youtube.store');
+Route::get('/youtube-link/{id}/edit', [YoutubeLinkController::class, 'edit'])->name('admin.youtube.edit');
+Route::put('/youtube-link/{id}', [YoutubeLinkController::class, 'update'])->name('admin.youtube.update');
+Route::delete('/youtube-link/{id}', [YoutubeLinkController::class, 'destroy'])->name('admin.youtube.destroy');
+Route::get('/video/{id}', [YoutubeLinkController::class, 'show'])->name('youtubelink.show');
+Route::get('/youtube-link/{id}/edit', [YoutubeLinkController::class, 'edit'])->name('admin.youtube.edit');
+
+
 });
 
 
@@ -104,6 +118,7 @@ Route::get('/service', [PageController::class, 'services'])->name('services');
 Route::get('/project', [PageController::class, 'projects'])->name('projects');
 
 
+Route::get('/video', [PageController::class, 'video'])->name('video');
 
 Route::get('/products', [PageController::class, 'products'])->name('products');
 
@@ -153,8 +168,6 @@ Route::get('/testimonials', function () {
     $testimonials = Testimonial::where('status', 1)->orderBy('item_no')->get();
     return view('frontend.testimonials', compact('testimonials'));
 });
-
-
 
 
 

@@ -27,6 +27,8 @@ use App\Mail\UserInquiryMail;
 use Illuminate\Support\Facades\Http;
 use SimpleXMLElement;
 
+use App\Models\admin\YoutubeLink; 
+
 
 class PageController extends Controller
 {
@@ -55,6 +57,15 @@ class PageController extends Controller
         $gallery = Gallery::where('status', 1)->orderBy('id', 'desc')->paginate(12);
 
         return view('front.pages.gallery', compact('gallery','pagetitle','name'));
+    }
+
+    public function video(){
+        $pagetitle = 'video';
+        $name = 'video';
+
+        $youtubeLinks = YoutubeLink::where('id', 1)->orderBy('id', 'desc')->paginate(12);
+
+        return view('front.pages.video', compact('youtubeLinks','pagetitle','name'));
     }
 
     

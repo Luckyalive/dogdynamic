@@ -221,5 +221,7 @@ class PageController extends Controller
         
         return view('mail.welcome');
     }
+
+    
     
 }

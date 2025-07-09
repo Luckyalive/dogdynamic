@@ -35,6 +35,8 @@
 
                                 <!-- <li class="nav-item"><a href="demo-charity-causes.html" class="nav-link">Causes</a></li> -->
                                 <li class="nav-item"><a href="{{route('gallery')}}" class="nav-link">Gallery</a></li>
+                                <li class="nav-item"><a href="{{route('video')}}" class="nav-link">Video</a></li>
+
                                 <li class="nav-item"><a href="{{route('blog')}}" class="nav-link">Blog</a></li>
                                 <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
                             </ul>

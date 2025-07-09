@@ -142,6 +142,32 @@
                 </ul>
             </li>
 
+
+
+        <li class="youtube-link">
+            <a class="sidebar-header" href="javascript:void(0)">
+                <i data-feather="video"></i>
+                <span>YouTube Link</span>
+                <i class="fa fa-angle-right pull-right"></i>
+            </a>
+
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="{{ route('admin.youtube.index') }}">
+                        <i class="fa fa-circle"></i>YouTube Link List
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.youtube.create') }}">
+                        <i class="fa fa-circle"></i>Add YouTube Link
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+
             
 
             <li class="gallery">

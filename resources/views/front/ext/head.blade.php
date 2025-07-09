@@ -23,6 +23,6 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/icon.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}" />
-        <link rel="stylesheet" href="{{ asset('frontend/css/demos/charity/charity.css') }}" />
+        <link rel="stylesheet" href="{{ asset('frontend/css/charity.css') }}" />
 
     </head>
